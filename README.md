@@ -7,4 +7,4 @@ The backend will be written with Django. I will not use django-rest-framework be
 
 ### Frontend
 
-For the frontend react will be used. I chose material ui for the ui framework. For the post editor, I will use mainly Draft.js but with some customization.
+For the frontend ReactJS will be used. I chose material ui for the ui framework. For the post editor, I will use mainly Draft.js but with some customization.
