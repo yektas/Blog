@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-//import 'react-quill/dist/quill.snow.css';
 import './index.css';
 import App from './App';
+import 'react-quill/dist/quill.bubble.css';
 import * as serviceWorker from './serviceWorker';
 
 

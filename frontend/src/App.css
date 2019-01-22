@@ -1,20 +1,38 @@
-body {
-    font-family: medium-content-serif-font, Georgia, Cambria, 'Times New Roman',
-        Times, serif;
+@import '~antd/dist/antd.css';
+
+.quill {
+    border: none;
 }
 
-.ql-container {
+img {
+    border: 5px;
+}
+
+.ql-editor {
     font-family: medium-content-serif-font, Georgia, Cambria, 'Times New Roman',
         Times, serif;
     font-weight: 400;
     font-style: normal;
     font-size: 21px;
-    line-height: 1.7;
+    line-height: 1.7 !important;
     letter-spacing: 0;
-    overflow-wrap: break-word;
-    max-width: 740px;
+    overflow-wrap: break-word !important;
+    max-width: 100%;
+    min-height: 1080px;
     padding-left: 20px;
     padding-right: 20px;
+    color: rgba(0, 0, 0, 0.84);
+}
+
+pre {
+    line-height: 1.1;
+    white-space: pre !important;
+    font-family: monospace !important;
+    font-size: 20px;
+}
+
+pre.ql-syntax {
+    overflow-y: auto !important;
 }
 
 .ql-tooltip {

@@ -1,8 +1,13 @@
 import React from 'react';
+import './highlight.js';
 import ReactQuill, { Quill } from 'react-quill';
 import BlotFormatter from "quill-blot-formatter";
 import { ImageDrop } from "quill-image-drop-module";
+import { Button } from '@material-ui/core';
+import '../assets/css/monokai-sublime.css';
 
+
+/*
 function MyModule(quill, options){
     quill.on('selection-change', function(range, oldRange, source) {
         if (range) {
@@ -25,13 +30,14 @@ function MyModule(quill, options){
       } else {
         console.log('User cursor is not in editor');
       }
-}
+}*/
 
 Quill.register('modules/blotFormatter', BlotFormatter);
 Quill.register('modules/imageDrop', ImageDrop);
-Quill.register('modules/myModule', MyModule);
+/*Quill.register('modules/myModule', MyModule);*/
 
 const modules = {
+    syntax: true,
     toolbar: [
         [{ 'header': [1, 2, false] }],
         ['bold', 'italic', 'underline','strike', 'blockquote'],
@@ -40,7 +46,9 @@ const modules = {
         ['clean'],
         ['code-block']
     ],
-    syntax: true,
+    blotFormatter: {},
+    imageDrop: true
+    
 }
 
 const formats = [
@@ -50,24 +58,58 @@ const formats = [
     'link', 'image', 'code-block'
   ]
 
-class PostEditor2 extends React.Component {
+class PostEditor extends React.Component {
     constructor(props) {
         super(props)
-        this.state = { text: '' }
+        this.state = { text: 'Tell your story...' }
+        this.handleChange = this.handleChange.bind(this)
+        this.exportContent = this.exportContent.bind(this)
+        this.quillRef = null;      // Quill instance
+        this.reactQuillRef = null; // ReactQuill component
+       
       }
 
+      componentDidMount() {
+        this.attachQuillRefs()
+        this.quillRef.root.spellcheck = false
+      }
+      
+      componentDidUpdate() {
+        this.attachQuillRefs()
+      }
+      
+      attachQuillRefs = () => {
+        if (typeof this.reactQuillRef.getEditor !== 'function') return;
+        this.quillRef = this.reactQuillRef.getEditor();
+      }
+    handleChange(value) {
+      this.setState({ text: value })
+    }
+
+    exportContent(){
+      //console.log(this.quillRef.root.innerHTML);
+      console.log(this.quillRef.getContents());
+    }
+
+    
 
     render() {
         return (
+          <div>
             <ReactQuill 
-                theme="snow"
+                theme="bubble"
+                ref={(el) => { this.reactQuillRef = el }}
                 value={this.state.text}
                 modules={modules}
                 formats={formats}
-                 >
-                 </ReactQuill>
+              >
+            </ReactQuill>
+            <Button variant="contained" color="primary" onClick={this.exportContent}>
+              Export
+            </Button>
+            </div>
         );
     }
 }
 
-export default PostEditor2;
+export default PostEditor;

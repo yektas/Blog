@@ -7,7 +7,7 @@ class App extends Component {
     render() {
         return (
             <Router>
-                <main style={{marginTop: "4rem"}}>
+                <main>
                     <Routes/>
                 </main>
             </Router>
