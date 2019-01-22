@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load staticfiles %}
+    <meta name="description"
+          content="eSpor oyuncularına düzenli olarak ödüllü organizasyon hizmeti veren ve bağımsız eSpor organizasyonlarına profesyonel altyapı desteği sunan bir platformdur.">
+    <meta name=”keywords” content="espor, turnuva, ödül, oyuncu"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+<body>
+
+<div>
+<ul>
+
+    {% for comment in comments %}
+        <li>{{ comment.content }}</li>
+    {% endfor %}
+
+</ul>
+
+</div>
+
+</body>
+</html>
