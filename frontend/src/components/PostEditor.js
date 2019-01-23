@@ -1,10 +1,11 @@
 import React from 'react';
 import './highlight.js';
 import ReactQuill, { Quill } from 'react-quill';
+import { Button } from 'antd';
 import BlotFormatter from "quill-blot-formatter";
 import { ImageDrop } from "quill-image-drop-module";
-import { Button } from '@material-ui/core';
 import '../assets/css/monokai-sublime.css';
+import initDelta from "./editor/initDelta";
 
 
 /*
@@ -58,10 +59,11 @@ const formats = [
     'link', 'image', 'code-block'
   ]
 
+
 class PostEditor extends React.Component {
     constructor(props) {
         super(props)
-        this.state = { text: 'Tell your story...' }
+        this.state = { text: initDelta }
         this.handleChange = this.handleChange.bind(this)
         this.exportContent = this.exportContent.bind(this)
         this.quillRef = null;      // Quill instance
@@ -88,7 +90,7 @@ class PostEditor extends React.Component {
 
     exportContent(){
       //console.log(this.quillRef.root.innerHTML);
-      console.log(this.quillRef.getContents());
+      console.log(JSON.stringify(this.quillRef.getContents()));
     }
 
     
@@ -104,9 +106,7 @@ class PostEditor extends React.Component {
                 formats={formats}
               >
             </ReactQuill>
-            <Button variant="contained" color="primary" onClick={this.exportContent}>
-              Export
-            </Button>
+            <Button type="primary" onClick={this.exportContent}>EXPORT</Button>
             </div>
         );
     }

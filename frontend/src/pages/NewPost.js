@@ -1,6 +1,7 @@
 import React from 'react';
-import { Layout, Menu, Card, Col, Row, Input } from 'antd';
+import { Layout, Menu, Col, Row } from 'antd';
 import PostEditor from "../components/PostEditor";
+import PostTitle from "../components/common/PostTitle";
 const { Header, Content, Footer } = Layout;
 
 class NewPost extends React.Component {
@@ -22,7 +23,6 @@ class NewPost extends React.Component {
                 </Menu>
             </Header>
             <Content  style={{padding: '0 50px', minHeight: 1080}}>
-               
                 <Row style={{marginTop: 50}}>
                     <Col style={{ height: 500, textAlign: "center"}} md={7}>
                         Empty Area
@@ -31,8 +31,7 @@ class NewPost extends React.Component {
                         <div style={{textAlign: "right"}}>
                             Publish Button !!
                         </div>
-                        <Input placeholder="TITLE" />
-                        <Input placeholder="Excerpt" />
+                        <PostTitle placeholder="Title" />
                         <PostEditor />
                     </Col>
                     <Col style={{ height: 500, textAlign: "center"}} md={7}>

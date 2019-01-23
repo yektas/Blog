@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-import Layout from "../components/Layout";
 import axios from "axios";
-import Button from "@material-ui/core/Button/Button";
+import { Link } from "react-router-dom";
+import { Button } from "antd";
+
 
 const graphql = axios.create({
     baseURL: 'http://localhost:8000/graphql',
@@ -41,19 +42,19 @@ class Home extends Component {
     render() {
         return (
             <div>
-                <Layout>
-                    <h1> Home Page </h1>
-                    <Button variant="contained" color="primary" onClick={this.fetchPosts}> Get posts </Button>
-                    <ul>
-                        {this.state.posts &&
-                        this.state.posts.map(post => (
-                           <div key={post.id}>
-                                <h3>{post.title}</h3>
-                                <p>{post.content}</p>
-                           </div>
-                        ))}
-                    </ul>
-                </Layout>
+                <Link to="/new-post">Create a new post</Link>
+                <h1> Home Page </h1>
+                
+                <Button type="primary" onClick={this.fetchPosts}> Get posts </Button>
+                <ul>
+                    {this.state.posts &&
+                    this.state.posts.map(post => (
+                        <div key={post.id}>
+                            <h3>{post.title}</h3>
+                            <p>{post.content}</p>
+                        </div>
+                    ))}
+                </ul>
             </div>
         );
     }

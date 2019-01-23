@@ -3,3 +3,5 @@ Pillow
 django-filter
 graphene_django
 django-cors-headers
+django-taggit
+psycopg2

@@ -1,12 +1,18 @@
 import graphene
-from posts.schema import Query as posts_query
+
+import posts.schema
 
 
-class Query(
-        posts_query,
-        graphene.ObjectType):
+class Mutation(
+    posts.schema.Mutation,
+    graphene.ObjectType):
     pass
 
 
+class Query(
+    posts.schema.Query,
+    graphene.ObjectType):
+    pass
 
-schema = graphene.Schema(query=Query)
+
+schema = graphene.Schema(query=Query, mutation=Mutation)
