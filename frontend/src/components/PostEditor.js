@@ -71,26 +71,27 @@ class PostEditor extends React.Component {
        
       }
 
-      componentDidMount() {
-        this.attachQuillRefs()
-        this.quillRef.root.spellcheck = false
+    componentDidMount() {
+      this.attachQuillRefs()
+      this.quillRef.root.spellcheck = false
+    }
+    
+    componentDidUpdate() {
+      this.attachQuillRefs()
+    }
+    
+    attachQuillRefs = () => {
+      if (typeof this.reactQuillRef.getEditor !== 'function') return;
+      this.quillRef = this.reactQuillRef.getEditor();
       }
-      
-      componentDidUpdate() {
-        this.attachQuillRefs()
-      }
-      
-      attachQuillRefs = () => {
-        if (typeof this.reactQuillRef.getEditor !== 'function') return;
-        this.quillRef = this.reactQuillRef.getEditor();
-      }
+
     handleChange(value) {
       this.setState({ text: value })
     }
 
     exportContent(){
-      //console.log(this.quillRef.root.innerHTML);
-      console.log(JSON.stringify(this.quillRef.getContents()));
+      //console.log(this.quillRef.root.innerHTML); // Export as HTML
+      return this.quillRef.getContents(); // Export as Delta format
     }
 
     
@@ -106,7 +107,6 @@ class PostEditor extends React.Component {
                 formats={formats}
               >
             </ReactQuill>
-            <Button type="primary" onClick={this.exportContent}>EXPORT</Button>
             </div>
         );
     }

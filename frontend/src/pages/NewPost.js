@@ -1,10 +1,15 @@
 import React from 'react';
-import { Layout, Menu, Col, Row } from 'antd';
+import { Layout, Menu, Col, Row, Button } from 'antd';
+import { Formik, Form, Field } from "formik";
 import PostEditor from "../components/PostEditor";
 import PostTitle from "../components/common/PostTitle";
 const { Header, Content, Footer } = Layout;
 
 class NewPost extends React.Component {
+
+    handleSubmit(values){
+        console.log(values);
+      }
     
     render() {
         return (
@@ -28,11 +33,23 @@ class NewPost extends React.Component {
                         Empty Area
                     </Col>
                     <Col style={{ height: 500, textAlign: "center"}} md={10}>
-                        <div style={{textAlign: "right"}}>
-                            Publish Button !!
-                        </div>
-                        <PostTitle placeholder="Title" />
-                        <PostEditor />
+                    
+                    <Formik
+                        onSubmit={(values, actions) => {
+                            this.handleSubmit(values);
+                            actions.setSubmitting(false);   
+                        }}
+                        >
+                        {({ isSubmitting }) => (
+                            <Form>
+                                <Button type="primary" htmlType="submit" className="login-form-button" loading={isSubmitting}>
+                                    Publish
+                                </Button>
+                                <Field name="title" component={PostTitle} />
+                            </Form>
+                        )}
+                        </Formik>
+                            <PostEditor />
                     </Col>
                     <Col style={{ height: 500, textAlign: "center"}} md={7}>
                         Empty Area

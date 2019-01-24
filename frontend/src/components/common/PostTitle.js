@@ -30,11 +30,20 @@ const CustomTextArea = styled(TextArea)`
         border-color: #3c9be3e6;
     }
 `
-const PostTitle =({ placeholder }) => (
-            <Tooltip title="Your awesome title is here.">
-                <CustomTextArea value="50+ Data Structure and Algorithms Interview Questions for Programmers" autosize placeholder={placeholder}/>
+class PostTitle extends React.Component {
+
+    render(){
+        const { placeholder, onChange} = this.props;
+        return (
+            <Tooltip placement="leftTop" title="Your awesome title is here.">
+                <CustomTextArea onChange={onChange} value="50+ Data Structure and Algorithms Interview Questions for Programmers" autosize placeholder={placeholder}/>
             </Tooltip>
-        );
+
+            );
+
+    }
+
+}
 
 PostTitle.propTypes = {
     placeholder: PropTypes.string
