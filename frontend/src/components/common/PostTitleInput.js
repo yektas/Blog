@@ -1,7 +1,6 @@
-import React from "react";
-import styled from 'styled-components';
-import PropTypes from 'prop-types';
+import React from 'react';
 import { Input, Tooltip  } from "antd";
+import styled from 'styled-components';
 
 const { TextArea } = Input;
 
@@ -30,23 +29,15 @@ const CustomTextArea = styled(TextArea)`
         border-color: #3c9be3e6;
     }
 `
-class PostTitle extends React.Component {
 
-    render(){
-        const { placeholder, onChange} = this.props;
-        return (
-            <Tooltip placement="leftTop" title="Your awesome title is here.">
-                <CustomTextArea onChange={onChange} value="50+ Data Structure and Algorithms Interview Questions for Programmers" autosize placeholder={placeholder}/>
-            </Tooltip>
+const PostTitleInput = ({
+    field, // { name, value, onChange, onBlur }
+    form, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
+    ...props
+  }) => (
+    <Tooltip placement="leftTop" title="Your awesome title is here.">
+      <CustomTextArea autosize {...field} {...props} />
+    </Tooltip>
+  );
 
-            );
-
-    }
-
-}
-
-PostTitle.propTypes = {
-    placeholder: PropTypes.string
-};
-
-export default PostTitle;
+export default PostTitleInput;

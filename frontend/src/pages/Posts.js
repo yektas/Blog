@@ -1,13 +1,11 @@
 import React, {Component} from 'react';
-import axios from "axios";
+import { Query } from 'react-apollo';
+import gql from 'graphql-tag';
+import ReactQuill from 'react-quill';
+import EditorLayout from "../components/common/EditorLayout";
 
 
-
-const graphql = axios.create({
-    baseURL: 'http://localhost:8000/graphql',
-});
-
-const GET_POSTS = `
+const GET_POSTS = gql`
 {
     allPosts {
       edges {
@@ -31,40 +29,38 @@ const GET_POSTS = `
   }
 `;
 
+const convertToHTML = (delta) => {
+  const deltaOps = JSON.parse(delta);
+  return <ReactQuill
+            theme="bubble" 
+            defaultValue={deltaOps}
+			readOnly={true}
+			modules={{syntax: true}}	
+		/>
+}
+
 class Posts extends Component {
-    state = {
-        posts: null,
-        errors: null,
-    };
-
-    fetchPosts = () => {
-        graphql
-            .post('', {query: GET_POSTS})
-            .then(result => {
-                console.log(result);
-                    this.setState(() => ({
-                        posts: result.data.data.allPosts.edges,
-                        errors: result.data.errors,
-                    }))
-                }
-            );
-    };
-
-    componentDidMount(){
-        this.fetchPosts();
-    }
-
-
     render() {
         return (
-            <div>
-                {this.state.posts &&
-                        this.state.posts.map(post => (
-                            <h5>{post.node.excerpt}</h5>
-                        ))}
-        </div>
-    );
-    }
+          <Query query={GET_POSTS}>
+            {({ loading, error, data }) => {
+              if (loading) return <div>Fetching</div>
+              if (error) return <div>Error</div>
+        
+              return (
+                <EditorLayout>
+                	{data.allPosts.edges.map(post => (
+                    	<div key={post.node.id}>
+							<h1>{post.node.title}</h1>
+							{convertToHTML(post.node.content)}
+						</div>  
+                    ))}
+                </EditorLayout>
+              )
+            }}
+          </Query>
+        )
+      }
 }
 
 export default Posts;
