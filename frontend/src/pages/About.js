@@ -1,10 +1,13 @@
-
-import React, {Component} from 'react';
+import {Component} from 'react';
+import {MainLayout} from '../components/Layout';
 
 class About extends Component {
     render() {
         return (
-            <h1>About page </h1>
+            < MainLayout >
+            < h1 > About
+        page < /h1>
+        < /MainLayout>
         );
     }
 }

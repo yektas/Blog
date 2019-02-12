@@ -1,13 +1,11 @@
 import graphene
+from comments.models import Comment
 from django.contrib.auth.models import User
-from graphene_django.converter import convert_django_field
 from graphene import relay, ObjectType, InputObjectType, String
 from graphene_django import DjangoObjectType
-from graphene_django.filter import DjangoFilterConnectionField
-from taggit.managers import TaggableManager
-
-from comments.models import Comment
+from graphene_django.converter import convert_django_field
 from posts.models import Post, Category
+from taggit.managers import TaggableManager
 
 
 @convert_django_field.register(TaggableManager)
@@ -26,17 +24,10 @@ class AuthorNode(DjangoObjectType):
 
 
 class PostNode(DjangoObjectType):
-
     comments = graphene.List(CommentNode)
 
     class Meta:
         model = Post
-        interfaces = (relay.Node,)
-        filter_fields = {
-            'title': ['exact', 'istartswith'],
-            'author': ['exact'],
-            'category': ['exact'],
-        }
 
 
 
@@ -69,6 +60,7 @@ class CreatePost(graphene.Mutation):
 
     new_post = graphene.Field(PostNode)
 
+    #    @login_required
     def mutate(self, info, post):
         new_post = update_create_instance(post)  # use custom function to create book
 
@@ -80,6 +72,12 @@ class Mutation(graphene.AbstractType):
 
 
 class Query(ObjectType):
-    post = graphene.Field(PostNode, id=graphene.ID(required=True))
-    all_posts = DjangoFilterConnectionField(PostNode)
+    post = graphene.Field(PostNode, slug=graphene.String())
+    all_posts = graphene.List(PostNode)
 
+    def resolve_post(self, info, slug=None, **kwargs):
+        if slug:
+            return Post.objects.get(slug=slug)
+
+    def resolve_all_posts(self, info, **kwargs):
+        return Post.objects.all()

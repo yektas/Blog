@@ -1,42 +1,32 @@
-import React, {Component} from 'react';
-import { Query } from 'react-apollo';
+import {Component} from 'react';
+import {Query} from 'react-apollo';
+import {Link} from "react-router-dom";
 import gql from 'graphql-tag';
 import ReactQuill from 'react-quill';
-import EditorLayout from "../components/common/EditorLayout";
-
+import {EditorLayout} from "../components/Layout";
 
 const GET_POSTS = gql`
 {
-    allPosts {
-      edges {
-        node {
-          id
-          title
-          content
-          excerpt
-          image
-          comments {
-            id
-            author{
-                username
-              }
-            content
-            timestamp
-          }
-        }
-      }
-    }
+  allPosts {
+        id
+        title
+        slug
   }
+}
 `;
 
-const convertToHTML = (delta) => {
+const renderPost = (delta) => {
   const deltaOps = JSON.parse(delta);
   return <ReactQuill
             theme="bubble" 
             defaultValue={deltaOps}
-			readOnly={true}
-			modules={{syntax: true}}	
-		/>
+    readOnly = {true}
+    modules = {
+    {
+        syntax: true
+    }
+}
+    />
 }
 
 class Posts extends Component {
@@ -49,11 +39,22 @@ class Posts extends Component {
         
               return (
                 <EditorLayout>
-                	{data.allPosts.edges.map(post => (
-                    	<div key={post.node.id}>
-							<h1>{post.node.title}</h1>
-							{convertToHTML(post.node.content)}
-						</div>  
+                  {data.allPosts.map(post => (
+                      < div
+            key = {post.id
+        }>
+        <
+            h1 > < Link
+            to = {`/blog/post/${post.slug}`
+        }>
+            {
+                post.title
+            }
+        <
+            /Link></
+            h1 >
+
+            < /div>
                     ))}
                 </EditorLayout>
               )

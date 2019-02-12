@@ -1,10 +1,9 @@
 import React from 'react';
-import { Button } from 'antd';
-import { Field, Form, Formik } from "formik";
-import { observer } from "mobx-react";
-import PostEditor from "../components/PostEditor";
-import PostTitleInput from "../components/common/PostTitleInput";
-import EditorLayout from "../components/common/EditorLayout";
+import {Button} from 'antd';
+import {Field, Form, Formik} from "formik";
+import {observer} from "mobx-react";
+import {PostEditor, PostTitleInput} from "../components/Editor";
+import {EditorLayout} from "../components/Layout";
 import PostStore from "../store/PostStore";
 
 class NewPost extends React.Component {
@@ -37,5 +36,4 @@ class NewPost extends React.Component {
 }
 
 
-
-export default  observer(NewPost);
+export default observer(NewPost);

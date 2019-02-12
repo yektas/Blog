@@ -5,3 +5,7 @@ graphene_django
 django-cors-headers
 django-taggit
 psycopg2
+django-jwt
+djoser
+djangorestframework
+djangorestframework-jwt
