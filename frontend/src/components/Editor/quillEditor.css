@@ -1,0 +1,7 @@
+.ql-editor {
+	padding-left: 0px;
+}
+
+.ql-editor.ql-blank::before {
+	color: var(--text-color);
+}
