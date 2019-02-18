@@ -1,0 +1,28 @@
+.ql-editor {
+    padding-left: 0px;
+}
+
+.ql-editor.ql-blank::before {
+    color: var(--text-color);
+}
+
+.full-page-modal {
+    width: 90% !important;
+    padding: 0;
+    top: 10;
+    height: 60%;
+}
+
+.full-page-modal > .ant-modal-content {
+    height: 100%;
+    padding: 40px;
+}
+
+.steps-content {
+    min-height: 200px;
+    text-align: center;
+}
+
+.ant-steps-item-custom .ant-steps-item-icon > .ant-steps-icon {
+    line-height: 0;
+}

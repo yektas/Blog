@@ -1,9 +1,8 @@
 import gql from 'graphql-tag';
 import React, { Component } from 'react';
 import { Query } from 'react-apollo';
-import ReactQuill from 'react-quill';
 import { Link } from 'react-router-dom';
-import { EditorLayout } from '../components/Layout';
+import { MainLayout } from '../components/Layout';
 
 const GET_POSTS = gql`
 	{
@@ -15,18 +14,6 @@ const GET_POSTS = gql`
 	}
 `;
 
-const renderPost = delta => {
-	const deltaOps = JSON.parse(delta);
-	return (
-		<ReactQuill
-			theme="bubble"
-			defaultValue={deltaOps}
-			readOnly={true}
-			modules={{ syntax: true }}
-		/>
-	);
-};
-
 class Posts extends Component {
 	render() {
 		return (
@@ -36,7 +23,7 @@ class Posts extends Component {
 					if (error) return <div>Error</div>;
 
 					return (
-						<EditorLayout>
+						<MainLayout>
 							{data.allPosts.map(post => (
 								<div key={post.id}>
 									<h1>
@@ -46,7 +33,7 @@ class Posts extends Component {
 									</h1>
 								</div>
 							))}
-						</EditorLayout>
+						</MainLayout>
 					);
 				}}
 			</Query>

@@ -3,19 +3,13 @@ import { Layout, Menu, Row, Col, Dropdown, Button, Icon, Switch } from 'antd';
 import { Link, withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 import userStore from '../../store/UserStore';
-import newLogo from '../../assets/sy-new.png';
 import lastLogo from '../../assets/lastLogo.png';
-import logoGif from '../../assets/logo-gif.gif';
 import themes from '../../themes';
 import AuthModal from '../Auth/AuthModal';
 const { Header: AntHeader } = Layout;
 
 const CustomHeader = styled(AntHeader)`
 	background: var(--background);
-`;
-
-const LogoWrapper = styled(Row)`
-	text-align: left;
 `;
 
 const Logo = styled.img`
@@ -114,7 +108,7 @@ class HeaderClass extends Component {
 						<Logo src={lastLogo} alt="test" />
 					</Col>
 					<Col span={6}>
-						{this.user ? (
+						{user ? (
 							<Dropdown overlay={menu} trigger={['click']}>
 								<Button style={{ marginLeft: 8 }}>
 									Button <Icon type="down" />

@@ -1,39 +1,87 @@
 import React from 'react';
-import {Button} from 'antd';
-import {Field, Form, Formik} from "formik";
-import {observer} from "mobx-react";
-import {PostEditor, PostTitleInput} from "../components/Editor";
-import {EditorLayout} from "../components/Layout";
-import PostStore from "../store/PostStore";
+import { compose } from 'redux';
+import { Col } from 'antd';
+import { Field, Form, Formik } from 'formik';
+import gql from 'graphql-tag';
+import { graphql } from 'react-apollo';
+import { observer } from 'mobx-react';
+import { PostEditor, PostTitleInput } from '../components/Editor';
+import { EditorLayout } from '../components/Layout';
+import OutlineButton from '../components/common/OutlineButton';
+import postStore from '../store/PostStore';
+import PostDetailsForm from '../components/Editor/PostDetailsForm';
+
+const NEW_POST_MUTATION = gql`
+    mutation newPost($post: PostCreateInput!) {
+        createPost(post: $post) {
+            newPost {
+                id
+                title
+                author {
+                    username
+                    password
+                }
+            }
+        }
+    }
+`;
 
 class NewPost extends React.Component {
+    state = {
+        detailFormVisible: false
+    };
 
-    handleSubmit(values, actions){
-        PostStore.setTitle(values.title);
-        setTimeout(() => {
-            actions.setSubmitting(false);
-            console.log("PostStore values: ", PostStore);
-        }, 1500)
-        
-    }
-    
+    handleSubmit = async (values, actions) => {
+        postStore.setTitle(values.title);
+        actions.setSubmitting(false);
+        console.log('PostStore values: ', postStore);
+        const { data } = await this.props.newPostMutation({
+            variables: {
+                post: {
+                    title: 'TESTTTTTTT',
+                    excerpt: 'Hımm',
+                    content: '{Bu benim öyküm}',
+                    categoryName: 'Javascript',
+                    authorId: 1
+                }
+            }
+        });
+        console.log(data);
+    };
+
+    handlePublish = (title) => {
+        postStore.setTitle(title);
+        this.setState({ detailFormVisible: true });
+    };
+
     render() {
         return (
-            <EditorLayout>
                 <Formik
-                        onSubmit={this.handleSubmit}
-                        render={(props) => (
+                    onSubmit={this.handleSubmit}
+                    render={(props) => (
+                        <EditorLayout>
                             <Form>
-                                <Button type="primary" htmlType="submit" className="login-form-button" loading={props.isSubmitting}>Publish</Button>
-                                <Field placeholder="Title" name="title" spellCheck="false" component={PostTitleInput}/>
+                                <PostDetailsForm
+                                    visible={this.state.detailFormVisible}
+                                    onCancel={() => this.setState({ detailFormVisible: false })}
+                                />
+                                <Col span={2} offset={16}>
+                                    <OutlineButton
+                                        ghost
+                                        type='primary'
+                                        onClick={() => this.handlePublish(props.values.title)}
+                                    >
+                                        Ready to publish
+                                    </OutlineButton>
+                                </Col>
+                                <Field placeholder='Title' name='title' spellCheck='false' component={PostTitleInput} />
                                 <PostEditor />
                             </Form>
-                        )}
+                        </EditorLayout>
+                    )}
                 />
-            </EditorLayout>         
         );
     }
 }
 
-
-export default observer(NewPost);
+export default compose(observer, graphql(NEW_POST_MUTATION, { name: 'newPostMutation' }))(NewPost);

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Form as AntdForm, Icon, Tabs, Modal } from 'antd';
+import { Tabs, Modal } from 'antd';
 import LoginForm from './LoginForm';
 import RegisterForm from './RegisterForm';
 

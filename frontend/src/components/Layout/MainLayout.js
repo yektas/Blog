@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layout, Menu, Col, Row, Button, Input } from 'antd';
+import { Layout, Col, Row } from 'antd';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
@@ -22,11 +22,11 @@ class MainLayout extends React.Component {
 				<Content
 					style={{
 						padding: '0 50px',
-						marginTop: 110,
+						marginTop: 50,
 						minHeight: 1080
 					}}>
 					<Row style={{ marginTop: 50 }}>
-						<Col span={12} offset={6}>
+						<Col span={14} offset={5}>
 							{this.props.children}
 						</Col>
 					</Row>

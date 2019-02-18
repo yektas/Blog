@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Layout, Col, Row } from 'antd';
-
-import { Header } from '../Header';
+import { EditorHeader } from '../Header/EditorHeader';
 
 const { Content, Footer } = Layout;
 
@@ -16,24 +15,23 @@ class EditorLayout extends Component {
 	render() {
 		return (
 			<CustomLayout>
-				<Header />
+				<EditorHeader/>
 				<Content
 					style={{
 						padding: '0 50px',
-						marginTop: 110,
 						minHeight: 1080
 					}}>
-					<Row style={{ marginTop: 50, marginBottom: 50 }}>
+					<Row style={{ marginBottom: 50 }}>
 						<Col
 							style={{ height: 500, textAlign: 'center' }}
-							span={6}>
-							Left Empty Area
+							span={5}>
+							{this.props.leftColumn}
 						</Col>
-						<Col span={12}>{this.props.children}</Col>
+						<Col span={14}>{this.props.children}</Col>
 						<Col
 							style={{ height: 500, textAlign: 'center' }}
-							span={6}>
-							Right Empty Area
+							span={5}>
+							{this.props.rightColumn}
 						</Col>
 					</Row>
 				</Content>

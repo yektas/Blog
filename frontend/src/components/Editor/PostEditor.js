@@ -3,11 +3,10 @@ import './highlight.js';
 import styled from "styled-components";
 import ReactQuill, { Quill } from 'react-quill';
 import { observer } from "mobx-react";
-import { Button } from 'antd';
 import BlotFormatter from "quill-blot-formatter";
 import { ImageDrop } from "quill-image-drop-module";
 import PostStore from "../../store/PostStore";
-import "./quillEditor.css";
+import "./editor.css";
 
 const QuillEditor = styled(ReactQuill)`
 

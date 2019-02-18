@@ -1,6 +1,6 @@
 import map from 'lodash/map';
 import React from 'react';
-import { DatePicker, Form, Input, TimePicker, Select, Col } from 'antd';
+import { DatePicker, Form, Input, TimePicker, Select } from 'antd';
 
 const FormItem = Form.Item;
 const { Option } = Select;

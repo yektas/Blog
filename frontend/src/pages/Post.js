@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import gql from "graphql-tag";
 import { Query } from "react-apollo";
 import ReactQuill from 'react-quill';
-import { EditorLayout } from '../components/Layout';
+import { MainLayout } from '../components/Layout';
 import CommentAntd from '../components/Comment/CommentAntd';
-import "../components/Editor/quillEditor.css";
+import "../components/Editor/editor.css";
 
 const GET_POST = gql`
     query Post($slug: String!) {
@@ -30,26 +30,23 @@ const renderPost = (delta) => {
 const Post = ({ match }) => {
     const slug = match.params.slug;
     return(
-        <EditorLayout>
-            <Query query={GET_POST}
-                variables={{ slug }}>
-                {({ loading, error, data }) => {
-                    if (loading) return null;
-                    if (error) return `Error!: ${error}`;
-            
-                    return (
-                        <div>
-                            <h1>{data.post.title}</h1>
-                            {renderPost(data.post.content)}
-                            <CommentAntd />
-                        </div>
-                    );
-                }}
-                </Query>
-                
-        </EditorLayout>
+            <MainLayout>
+                <Query query={GET_POST}
+                    variables={{ slug }}>
+                    {({ loading, error, data }) => {
+                        if (loading) return null;
+                        if (error) return `Error!: ${error}`;
+                        return (
+                            <div>
+                                <h1>{data.post.title}</h1>
+                                {renderPost(data.post.content)}
+                                <CommentAntd />
+                            </div>
+                        );
+                    }}
+                    </Query>
+            </MainLayout>
     );
-    
 };
 
 export default Post;

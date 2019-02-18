@@ -10,7 +10,7 @@ class Routes extends React.Component {
 	render() {
 		return (
 			<Switch>
-				<Route exactpath="/" component={Posts} />
+				<Route exact path="/" component={Posts} />
 				<Route exact path="/about" component={About} />
 				<Route exact path="/portfolio" component={Portfolio} />
 				<Route exact path="/blog/new-post" component={NewPost} />
