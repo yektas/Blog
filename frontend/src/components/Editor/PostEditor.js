@@ -69,7 +69,6 @@ class PostEditorComponent extends React.Component {
       this.state = { text: '' }  // Placeholder delta text for testing..
       
       this.handleChange = this.handleChange.bind(this)
-      this.exportContent = this.exportContent.bind(this)
       this.quillRef = null;      // Quill instance
       this.reactQuillRef = null; // ReactQuill component
       
@@ -95,12 +94,6 @@ class PostEditorComponent extends React.Component {
       PostStore.setContent(this.quillRef.getContents()); // Export as Delta format and update mobx store 
     });
   }
-
-  exportContent(){
-    return this.quillRef.getContents(); // 
-  }
-
-  
 
   render() {
     return (

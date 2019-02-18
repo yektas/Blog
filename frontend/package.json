@@ -5,6 +5,7 @@
   "dependencies": {
     "antd": "^3.12.4",
     "apollo-boost": "^0.1.27",
+    "apollo-upload-client": "^10.0.0",
     "axios": "^0.18.0",
     "bootstrap": "^4.2.1",
     "classnames": "^2.2.6",
@@ -23,6 +24,7 @@
     "react": "^16.7.0",
     "react-apollo": "^2.4.0",
     "react-dom": "^16.7.0",
+    "react-dropzone": "^8.1.0",
     "react-emotion": "^9.2.4",
     "react-headroom": "^2.2.4",
     "react-icons": "^3.2.2",

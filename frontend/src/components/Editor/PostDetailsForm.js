@@ -4,6 +4,7 @@ import styled from "styled-components";
 import './editor.css';
 import EditableTagGroup from './TagSelector';
 import CoverImageUpload from './CoverImageUpload';
+import ChooseCategory from "./ChooseCategory";
 import PostSummary from "./PostSummary";
 
 const Step = styled(Steps.Step)` 
@@ -34,10 +35,17 @@ class PostDetailsForm extends React.Component {
         },
         {
             key: 2,
+            title: 'Category',
+            description: 'Choose a category',
+            icon: 'project',
+            content: <ChooseCategory />
+        },
+        {
+            key: 3,
             title: 'Submit',
             description: 'Preview your post',
             icon: 'check',
-            content: <PostSummary />
+            content: <PostSummary onPublish={this.props.onPublish}/>
         }
     ];
 

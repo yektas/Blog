@@ -34,19 +34,18 @@ class NewPost extends React.Component {
     handleSubmit = async (values, actions) => {
         postStore.setTitle(values.title);
         actions.setSubmitting(false);
-        console.log('PostStore values: ', postStore);
-        const { data } = await this.props.newPostMutation({
-            variables: {
-                post: {
-                    title: 'TESTTTTTTT',
-                    excerpt: 'Hımm',
-                    content: '{Bu benim öyküm}',
-                    categoryName: 'Javascript',
-                    authorId: 1
-                }
-            }
-        });
-        console.log(data);
+        console.log('PostStore values: ', JSON.stringify(postStore, null, 4));
+        // const { data } = await this.props.newPostMutation({
+        //     variables: {
+        //         post: {
+        //             title: 'TESTTTTTTT',
+        //             excerpt: 'Hımm',
+        //             content: '{Bu benim öyküm}',
+        //             categoryName: 'Javascript',
+        //             authorId: 1
+        //         }
+        //     }
+        // });
     };
 
     handlePublish = (title) => {
@@ -60,10 +59,11 @@ class NewPost extends React.Component {
                     onSubmit={this.handleSubmit}
                     render={(props) => (
                         <EditorLayout>
-                            <Form>
+                            <Form onSubmit={this.handleSubmit}>
                                 <PostDetailsForm
                                     visible={this.state.detailFormVisible}
                                     onCancel={() => this.setState({ detailFormVisible: false })}
+                                    onPublish={props.submitForm}
                                 />
                                 <Col span={2} offset={16}>
                                     <OutlineButton
