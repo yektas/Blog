@@ -28,17 +28,17 @@ class PostDetailsForm extends React.Component {
         },
         {
             key: 1,
-            title: 'Tags',
-            description: 'Choose your tags',
-            icon: 'tags',
-            content: <EditableTagGroup />
-        },
-        {
-            key: 2,
             title: 'Category',
             description: 'Choose a category',
             icon: 'project',
             content: <ChooseCategory />
+        },
+        {
+            key: 2,
+            title: 'Tags',
+            description: 'Choose your tags',
+            icon: 'tags',
+            content: <EditableTagGroup />
         },
         {
             key: 3,
@@ -54,8 +54,8 @@ class PostDetailsForm extends React.Component {
         const { current } = this.state;
         return (
             <Modal visible={visible} footer={null} className='full-page-modal' onCancel={onCancel}>
-                <Col span={6}>
-                    <Steps direction='vertical'  current={current}>
+                <Col span={24}>
+                    <Steps   current={current}>
                         {this.steps.map((item) => (
                             <Step
                                 key={item.key}
@@ -67,7 +67,7 @@ class PostDetailsForm extends React.Component {
                         ))}
                     </Steps>
                 </Col>
-                <Col span={18} className='steps-content'>
+                <Col span={24} className='steps-content'>
                     {this.steps[current].content}
                 </Col>
             </Modal>

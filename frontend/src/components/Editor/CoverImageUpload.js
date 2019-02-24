@@ -1,21 +1,16 @@
 import React, { Component } from 'react';
-import { Upload, Icon } from 'antd';
+import { Icon } from 'antd';
 import Dropzone from 'react-dropzone';
 import postStore from '../../store/PostStore';
 
 class CoverImageUpload extends Component {
     state = {
       imageFile: null,
-      imagePreview: null
+      imagePreview: postStore.coverImage
     }
     onDrop = (files) => {
-        const uploadedFile = files.map((file) =>
-        Object.assign(file, {
-            preview: URL.createObjectURL(file)
-        })
-    )[0]
         postStore.setCoverImage(files[0]);
-        this.setState({ imagePreview: uploadedFile })
+        this.setState({ imagePreview: files[0] })
     };
 
     render() {
@@ -26,7 +21,7 @@ class CoverImageUpload extends Component {
                     return imagePreview ? (
                         <div  key={imagePreview.name}>
                             <div >
-                                <img width="300px" src={imagePreview.preview} alt="test" />
+                                <img width="300px" src={postStore.coverImage.preview} alt="test" />
                             </div>
                         </div>
                     ) : (

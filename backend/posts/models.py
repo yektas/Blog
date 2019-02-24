@@ -1,3 +1,4 @@
+import os
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.postgres.fields import JSONField
 from django.db import models
@@ -8,12 +9,17 @@ from comments.models import Comment
 from posts.utils import unique_slug_generator
 
 
+def upload_file(instance, filename):
+    name, extension = os.path.splitext(filename)
+    return os.path.join('posts/{}/{}{}').format(instance.slug, "coverImage", extension.lower())
+
+
 class Post(models.Model):
     author = models.ForeignKey("auth.User", related_name="posts", on_delete=models.DO_NOTHING)
     title = models.CharField(max_length=150)
     excerpt = models.TextField()
     slug = models.SlugField(unique=True, editable=False)
-    image = models.ImageField()
+    image = models.ImageField(upload_to=upload_file)
     content = JSONField()
     is_draft = models.BooleanField(default=False)
     published_on = models.DateTimeField(auto_now=True, auto_now_add=False)

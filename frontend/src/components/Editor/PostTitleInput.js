@@ -8,7 +8,7 @@ const CustomTextArea = styled(TextArea)`
     background: transparent
     border: none;
     font-size: 2.5em;
-    color: #e76969;
+    color: var(--heading-color);
     font-family: 'MontSerrat', sans-serif;
     resize: none;
     overflow: hidden;
@@ -16,7 +16,7 @@ const CustomTextArea = styled(TextArea)`
     border-left: 1px solid;
     border-color: transparent;
     border-radius: 0;
-    
+
 
     :focus {
         box-shadow: none;

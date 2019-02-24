@@ -1,12 +1,18 @@
-import ApolloClient from 'apollo-boost';
+
 import React, { Component } from 'react';
 import { ApolloProvider } from 'react-apollo';
+import { createUploadLink } from "apollo-upload-client";
 import { BrowserRouter as Router } from 'react-router-dom';
 import './App.css';
 import Routes from './Routes';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+import { ApolloClient } from "apollo-client";
 
 const client = new ApolloClient({
-	uri: 'http://localhost:8000/graphql'
+	link: createUploadLink({
+		uri: 'http://localhost:8000/graphql',
+	}),
+	cache: new InMemoryCache(),
 });
 class App extends Component {
 	render() {

@@ -19,7 +19,6 @@ h3,
 h4,
 h5,
 h6 {
-    /*color: #3debb4;*/
     color: var(--heading-color) !important;
     font-family: 'MontSerrat', sans-serif;
 }
@@ -44,6 +43,13 @@ ant-form-explain {
 
 img {
     border: 5px;
+}
+
+code {
+    background-color: grey !important;
+    border-radius: 3px !important;
+    font-family: courier, monospace;
+    padding: 0 3px;
 }
 
 .fade-enter {

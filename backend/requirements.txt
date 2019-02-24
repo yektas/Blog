@@ -6,6 +6,7 @@ django-cors-headers
 django-taggit
 psycopg2
 django-graphql-jwt
+graphene-file-upload
 djoser
 djangorestframework
 djangorestframework-jwt

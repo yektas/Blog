@@ -1,3 +1,5 @@
+import json
+
 import graphene
 from comments.models import Comment
 from django.contrib.auth.models import User
@@ -6,16 +8,19 @@ from graphene_django import DjangoObjectType
 from graphene_django.converter import convert_django_field
 from posts.models import Post, Category
 from taggit.managers import TaggableManager
+from graphene_file_upload.scalars import Upload
 
 
 @convert_django_field.register(TaggableManager)
 def convert_field_to_string(field, registry=None):
     return String(description=field.help_text, required=not field.null)
 
+
 class CommentNode(DjangoObjectType):
     class Meta:
         model = Comment
         interfaces = (relay.Node,)
+
 
 class AuthorNode(DjangoObjectType):
     class Meta:
@@ -30,29 +35,32 @@ class PostNode(DjangoObjectType):
         model = Post
 
 
-
 class PostCreateInput(InputObjectType):
     """
     Class defined to accept input data
     from the interactive graphql console.
     """
     title = graphene.String(required=True)
-    excerpt = graphene.String(required=True)
+    excerpt = graphene.String(required=False)
     content = graphene.String(required=True)
+    image = Upload(required=True)
     category_name = graphene.String(required=True)
-    author_id = graphene.ID(required=True)
+    author = graphene.String(required=True)
+
 
 def update_create_instance(post_data):
-
-    author = User.objects.get(id=post_data.author_id)
+    author = User.objects.get(email=post_data.author)
     category = Category.objects.get(name=post_data.category_name)
+    content = json.loads(post_data.content)
     post, _ = Post.objects.get_or_create(title=post_data.title,
-                                      excerpt=post_data.excerpt,
-                                      content=post_data.content,
-                                      author=author,
-                                      category=category
-                                      )
+                                         excerpt=post_data.excerpt,
+                                         image=post_data.image,
+                                         content=content,
+                                         author=author,
+                                         category=category
+                                         )
     return post
+
 
 class CreatePost(graphene.Mutation):
     class Arguments:
@@ -69,7 +77,6 @@ class CreatePost(graphene.Mutation):
 
 class Mutation(graphene.AbstractType):
     create_post = CreatePost.Field()
-
 
 class Query(ObjectType):
     post = graphene.Field(PostNode, slug=graphene.String())

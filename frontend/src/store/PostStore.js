@@ -6,7 +6,7 @@ class PostStore {
   tags = [];
   content = '';
   excerpt = '';
-  coverImage = '';
+  coverImage = null;
   category = null;
   author = null;
 

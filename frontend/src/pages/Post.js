@@ -12,6 +12,7 @@ const GET_POST = gql`
             id
             title
             content
+            image
             slug
         }
     }
@@ -36,8 +37,10 @@ const Post = ({ match }) => {
                     {({ loading, error, data }) => {
                         if (loading) return null;
                         if (error) return `Error!: ${error}`;
+                        const imageSrc = "http://localhost:8000/media/" + data.post.image;
                         return (
                             <div>
+                                <img width="100%" height="100%" src={imageSrc} alt="cover"/>
                                 <h1>{data.post.title}</h1>
                                 {renderPost(data.post.content)}
                                 <CommentAntd />

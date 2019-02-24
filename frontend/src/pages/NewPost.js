@@ -10,6 +10,7 @@ import { EditorLayout } from '../components/Layout';
 import OutlineButton from '../components/common/OutlineButton';
 import postStore from '../store/PostStore';
 import PostDetailsForm from '../components/Editor/PostDetailsForm';
+import userStore from '../store/UserStore';
 
 const NEW_POST_MUTATION = gql`
     mutation newPost($post: PostCreateInput!) {
@@ -19,7 +20,6 @@ const NEW_POST_MUTATION = gql`
                 title
                 author {
                     username
-                    password
                 }
             }
         }
@@ -33,19 +33,23 @@ class NewPost extends React.Component {
 
     handleSubmit = async (values, actions) => {
         postStore.setTitle(values.title);
+        const user = { email: "admin@admin.com"};
+        userStore.setUser(user)
         actions.setSubmitting(false);
-        console.log('PostStore values: ', JSON.stringify(postStore, null, 4));
-        // const { data } = await this.props.newPostMutation({
-        //     variables: {
-        //         post: {
-        //             title: 'TESTTTTTTT',
-        //             excerpt: 'Hımm',
-        //             content: '{Bu benim öyküm}',
-        //             categoryName: 'Javascript',
-        //             authorId: 1
-        //         }
-        //     }
-        // });
+        console.log(postStore, null, 4);
+        const { data } = await this.props.newPostMutation({
+            variables: {
+                post: {
+                    title: postStore.title,
+                    excerpt: postStore.excerpt,
+                    content: postStore.content,
+                    categoryName: postStore.category,
+                    author: userStore.user.email,
+                    image: postStore.coverImage
+                }
+            }
+        });
+        console.log(data, null, 4)
     };
 
     handlePublish = (title) => {

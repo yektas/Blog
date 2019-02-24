@@ -2,5 +2,6 @@
     /* Default values for dark mode */
     --text-color: #e6dbc9;
     --background: #262628;
-    --heading-color: #e76969;
+    /*#e76969;*/
+    --heading-color: #f1ff79;
 }
