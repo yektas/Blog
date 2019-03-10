@@ -10,26 +10,26 @@ const Button = styled.button`
     height: 45px;
     cursor: pointer;
     margin-right: 10px;
-    border: 1px solid #ffffff73;
+    border: 1px solid var(--secondary-text-color);
 
     :focus {
         outline: none;
     }
     :hover {
       background: #e94828;
-      color: #fff;
+      color: #ffff;
       border-color: #e94828;
     }
 `;
 
 export default function NavigationButton(props) {
   return (
-    <IconContext.Provider value={{ color: "b5b5b5" }}>
+    <IconContext.Provider value={{ size: "20" }}>
     <Button onClick={props.onClick}>
       {
           props.direction === 'left' ?
-          <FaLongArrowAltLeft color="#fff" size="20" /> :
-          <FaLongArrowAltRight color="#fff" size="20"/>
+          <FaLongArrowAltLeft /> :
+          <FaLongArrowAltRight />
       }
     </Button>
     </IconContext.Provider>

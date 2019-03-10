@@ -18,7 +18,7 @@ class MainLayout extends React.Component {
 		const { showHeader } = this.props;
 		return (
 			<CustomLayout>
-				{showHeader && <Header />}
+				{showHeader && <HeaderV2 />}
 				<Content
 					style={{
 						padding: '0 50px',

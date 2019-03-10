@@ -33,51 +33,34 @@ const UPDATE_POST = gql`
     }
 `
 
-const renderPost = (delta, readOnly) => {
+const renderPost = (delta) => {
     const deltaOps = JSON.parse(delta);
     return <ReactQuill
         theme="bubble"
         defaultValue={deltaOps}
-        readOnly={readOnly}
+        readOnly={true}
         modules={{ syntax: true }}
     />
 }
 
 
 class Post extends React.Component {
-    state = {
-        readOnly: true,
-        postId : null
-    }
 
-    updatePost = async () => {
-/*         const { data } = await this.props.newPostMutation({
-            variables: {
-                post: {
-                    content: postStore.content,
-                }
-            }
-        }); */
-        console.log("gh", null, 4)
-    }
     render(){
         const slug = this.props.match.params.slug;
         return(
             <MainLayout>
-                <Button onClick={() => this.setState({ readOnly: false })}>Edit post</Button>
-                <Button type="primary" onClick={() => this.updatePost}>Save</Button>
                 <Query query={GET_POST}
                     variables={{ slug }}>
                     {({ loading, error, data }) => {
                         if (loading) return null;
                         if (error) return `Error!: ${error}`;
                         const imageSrc = "http://localhost:8000/media/" + data.post.image;
-                        this.setState({ postId: data.post.id});
                         return (
                             <div>
                                 <img width="100%" height="100%" src={imageSrc} alt="cover"/>
                                 <h1>{data.post.title}</h1>
-                                {renderPost(data.post.content, this.state.readOnly)}
+                                {renderPost(data.post.content)}
                                 <CommentAntd />
                             </div>
                         );
@@ -88,4 +71,4 @@ class Post extends React.Component {
     }
 };
 
-export default graphql(UPDATE_POST, { name: 'updateMutation' })(Post);
+export default Post;

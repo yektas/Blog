@@ -22,9 +22,9 @@ class Post(models.Model):
     image = models.ImageField(upload_to=upload_file)
     content = JSONField()
     is_draft = models.BooleanField(default=False)
-    published_on = models.DateTimeField(auto_now=True, auto_now_add=False)
+    published_on = models.DateTimeField(auto_now_add=True)
     read_time = models.IntegerField(default=0)
-    updated_on = models.DateTimeField(auto_now=True, auto_now_add=False)
+    updated_on = models.DateTimeField(auto_now_add=True)
     category = models.ForeignKey("Category", related_name="posts", on_delete=models.DO_NOTHING)
     tags = TaggableManager()
 
