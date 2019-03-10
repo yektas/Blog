@@ -1,4 +1,6 @@
 @import '~antd/dist/antd.css';
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
 
 body {
     margin: 0;
@@ -7,6 +9,10 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background-color: var(--background);
+}
+
+span[class="ant-typography"] {
+    color: var(--secondary-text-color);
 }
 
 .anticon {
@@ -23,7 +29,7 @@ h6 {
     font-family: 'MontSerrat', sans-serif;
 }
 
-ant-form-explain {
+.ant-form-explain {
     font-family: 'MontSerrat', sans-serif;
 }
 

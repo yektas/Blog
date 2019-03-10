@@ -1,0 +1,7 @@
+.ant-menu-item-selected {
+    border-color: var(--background) !important;
+}
+
+.navbar {
+    border-bottom: 2px solid #eee;
+}

@@ -1,7 +1,9 @@
 :root {
     /* Default values for dark mode */
     --text-color: #e6dbc9;
+    --secondary-text-color: #ffffffa3;
     --background: #262628;
     /*#e76969;*/
-    --heading-color: #f1ff79;
+    --heading-color: #ffff;
+    /* --heading-color: #f1ff79; */
 }

@@ -13,20 +13,19 @@ const CustomLayout = styled(Layout)`
     color: var(--text-color);
 `;
 
-class MainLayout extends React.Component {
+class HomeLayout extends React.Component {
 	render() {
 		const { showHeader } = this.props;
 		return (
 			<CustomLayout>
-				{showHeader && <Header />}
+				{showHeader && <HeaderV2 />}
 				<Content
 					style={{
 						padding: '0 50px',
-						marginTop: 50,
 						minHeight: 1080
 					}}>
-					<Row style={{ marginTop: 50 }}>
-						<Col span={14} offset={5}>
+					<Row style={{ marginTop: 20 }}>
+						<Col span={16} offset={4}>
 							{this.props.children}
 						</Col>
 					</Row>
@@ -38,12 +37,12 @@ class MainLayout extends React.Component {
 		);
 	}
 }
-MainLayout.defaultProps = {
+HomeLayout.defaultProps = {
 	showHeader: true
 };
 
-MainLayout.propTypes = {
+HomeLayout.propTypes = {
 	showHeader: PropTypes.bool
 };
 
-export { MainLayout };
+export { HomeLayout };

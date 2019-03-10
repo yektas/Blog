@@ -39,7 +39,7 @@ const getBorderColor = (type) => {
 
 
 const OutlineButton = (props) => (
-        <StyledButton {...props} >
+        <StyledButton ghost {...props} >
             {props.children}
         </StyledButton>
     )

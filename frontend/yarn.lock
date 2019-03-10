@@ -10,10 +10,10 @@
     ant-design-palettes "^1.1.3"
     babel-runtime "^6.26.0"
 
-"@ant-design/icons@~1.1.16":
-  version "1.1.16"
-  resolved "https://registry.yarnpkg.com/@ant-design/icons/-/icons-1.1.16.tgz#ac6426216934e3f4bc108f2f48f92ed66789235e"
-  integrity sha512-0zNVP5JYBJkfMi9HotN6QBQjF3SFmUlumJNJXZIH+pZWp/5EbrCczzlG3YTmBWoyRHAsuOGIjSFIy8v/76DTPg==
+"@ant-design/icons@~1.2.0":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@ant-design/icons/-/icons-1.2.1.tgz#8e19301b1433ec67d6bbd0e892782e2ade561ff9"
+  integrity sha512-gQx3nH6m1xvebOWh5xibhzVK02aoqHY7JUXUS4doAidSDRWsj5iwKC8Gq9DemDZ4T+bW6xO7jJZN1UsbvcW7Uw==
 
 "@babel/code-frame@7.0.0", "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.0.0-beta.35":
   version "7.0.0"
@@ -924,21 +924,6 @@
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.3.tgz#2b5a3ab3f918cca48a8c754c08168e3f03eba61b"
   integrity sha512-shAmDyaQC4H92APFoIaVDHCx5bStIocgvbwQyxPRrbUY20V1EYTbSDchWbuwlMG3V17cprZhA6+78JfB+3DTPw==
 
-"@popmotion/easing@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@popmotion/easing/-/easing-1.0.1.tgz#48336aea29542113df10aeb81b4fd10f0b95f937"
-  integrity sha512-NbIEz9mZAem0F0sjg2v57LbU9Y2Xc50QEX434jYrwEQzXJuJipyUV48Qz4hjHqbB/8xiUj0JMQfRvP8K9nUbxg==
-
-"@popmotion/popcorn@^0.3.0":
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/@popmotion/popcorn/-/popcorn-0.3.1.tgz#f0f33fbf7ff66f2cd0bf28be24bee0b1d46b65e8"
-  integrity sha512-TRhDPxfzM4CrUff2ELyzDj6xSEp5fcmbnrTO0VkmrN/TxJrAzP2H/VfIDRQQy82Yn65Vwn1ohrIi8eZLqzrCMA==
-  dependencies:
-    "@popmotion/easing" "^1.0.1"
-    framesync "^4.0.1"
-    hey-listen "^1.0.5"
-    style-value-types "^3.0.7"
-
 "@svgr/babel-plugin-add-jsx-attribute@^4.0.0":
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/@svgr/babel-plugin-add-jsx-attribute/-/babel-plugin-add-jsx-attribute-4.0.0.tgz#5acf239cd2747b1a36ec7e708de05d914cb9b948"
@@ -1044,20 +1029,10 @@
     "@svgr/plugin-svgo" "^4.0.3"
     loader-utils "^1.1.0"
 
-"@types/invariant@^2.2.29":
-  version "2.2.29"
-  resolved "https://registry.yarnpkg.com/@types/invariant/-/invariant-2.2.29.tgz#aa845204cd0a289f65d47e0de63a6a815e30cc66"
-  integrity sha512-lRVw09gOvgviOfeUrKc/pmTiRZ7g7oDOU6OAutyuSHpm1/o2RaBQvRhgK8QEdu+FFuw/wnWb29A/iuxv9i8OpQ==
-
 "@types/node@*":
   version "11.9.4"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-11.9.4.tgz#ceb0048a546db453f6248f2d1d95e937a6f00a14"
   integrity sha512-Zl8dGvAcEmadgs1tmSPcvwzO1YRsz38bVJQvH1RvRqSR9/5n61Q1ktcDL0ht3FXWR+ZpVmXVwN1LuH4Ax23NsA==
-
-"@types/node@^10.0.5":
-  version "10.12.18"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.12.18.tgz#1d3ca764718915584fcd9f6344621b7672665c67"
-  integrity sha512-fh+pAqt4xRzPfqA6eh3Z2y6fyZavRIumvjhaCL753+TVkGKGhpPeyrJG2JftD0T9q4GF00KjefsQ+PQNDdWQaQ==
 
 "@types/prop-types@*":
   version "15.5.8"
@@ -1075,6 +1050,13 @@
   integrity sha512-IhW3fPW+bkt9MLNlycw8u8fWb7oO7W5URC9MfZYHBlA24rex9rs23D5DETChu1zvgVdc5ka64ICjJOgQMr6Shw==
   dependencies:
     parchment "^1.1.2"
+
+"@types/react-slick@^0.23.3":
+  version "0.23.3"
+  resolved "https://registry.yarnpkg.com/@types/react-slick/-/react-slick-0.23.3.tgz#c9d14323a75f54f46a652fb745fe553aad091ce0"
+  integrity sha512-B6wU5ynINOolrByhoeJ448qZPjCFPcuhyQI5sjihjG8gQJuoTH6a4YQhuDm4umvbRVielJQANhptc8hmxA85IA==
+  dependencies:
+    "@types/react" "*"
 
 "@types/react@*":
   version "16.7.21"
@@ -1423,23 +1405,25 @@ ant-design-palettes@^1.1.3:
   dependencies:
     tinycolor2 "^1.4.1"
 
-antd@^3.12.4:
-  version "3.13.0"
-  resolved "https://registry.yarnpkg.com/antd/-/antd-3.13.0.tgz#ebd4b566ddedf6c7124c0ed1cc9036a85996d46b"
-  integrity sha512-Jt52rCOHpEco+vXjjjjtPozAI7QeX3+GRd+UZtqcZd83/FG3fmSU72kBoC1TYrzMHjPXGz8qBbspx1EDyJkQUg==
+antd@^3.14.0:
+  version "3.15.0"
+  resolved "https://registry.yarnpkg.com/antd/-/antd-3.15.0.tgz#af187ce62902edf261d7251fc9105407527fad9d"
+  integrity sha512-gSoVmQN7rfYmhfpv0dL2sL9gk0Pu9JHgGiExjLJZaSnbPjpCOTAYjIzxG/oo8GzCSeK5abgN5F1saWR5ggLVFQ==
   dependencies:
-    "@ant-design/icons" "~1.1.16"
+    "@ant-design/icons" "~1.2.0"
     "@ant-design/icons-react" "~1.1.2"
+    "@types/react-slick" "^0.23.3"
     array-tree-filter "^2.1.0"
     babel-runtime "6.x"
     classnames "~2.2.6"
+    copy-to-clipboard "^3.0.8"
     create-react-class "^15.6.3"
     create-react-context "0.2.2"
     css-animation "^1.5.0"
     dom-closest "^0.2.0"
     enquire.js "^2.1.6"
     lodash "^4.17.11"
-    moment "^2.22.2"
+    moment "^2.24.0"
     omit.js "^1.0.0"
     prop-types "^15.6.2"
     raf "^3.4.0"
@@ -1447,20 +1431,20 @@ antd@^3.12.4:
     rc-calendar "~9.10.3"
     rc-cascader "~0.17.0"
     rc-checkbox "~2.1.5"
-    rc-collapse "~1.10.2"
+    rc-collapse "~1.11.1"
     rc-dialog "~7.3.0"
     rc-drawer "~1.7.6"
     rc-dropdown "~2.4.1"
     rc-editor-mention "^1.1.7"
     rc-form "^2.4.0"
-    rc-input-number "~4.3.7"
+    rc-input-number "~4.4.0"
     rc-menu "~7.4.12"
     rc-notification "~3.3.0"
     rc-pagination "~1.17.7"
     rc-progress "~2.3.0"
     rc-rate "~2.5.0"
-    rc-select "^8.6.7"
-    rc-slider "~8.6.3"
+    rc-select "~9.0.0"
+    rc-slider "~8.6.5"
     rc-steps "~3.3.0"
     rc-switch "~1.9.0"
     rc-table "~6.4.0"
@@ -1468,7 +1452,7 @@ antd@^3.12.4:
     rc-time-picker "~3.6.1"
     rc-tooltip "~3.7.3"
     rc-tree "~1.14.6"
-    rc-tree-select "~2.5.0"
+    rc-tree-select "~2.6.0"
     rc-trigger "^2.6.2"
     rc-upload "~2.6.0"
     rc-util "^4.5.1"
@@ -2936,6 +2920,13 @@ copy-descriptor@^0.1.0:
   resolved "https://registry.yarnpkg.com/copy-descriptor/-/copy-descriptor-0.1.1.tgz#676f6eb3c39997c2ee1ac3a924fd6124748f578d"
   integrity sha1-Z29us8OZl8LuGsOpJP1hJHSPV40=
 
+copy-to-clipboard@^3.0.8:
+  version "3.0.8"
+  resolved "https://registry.yarnpkg.com/copy-to-clipboard/-/copy-to-clipboard-3.0.8.tgz#f4e82f4a8830dce4666b7eb8ded0c9bcc313aba9"
+  integrity sha512-c3GdeY8qxCHGezVb1EFQfHYK/8NZRemgcTIzPq7PuxjHAf/raKibn2QdhHPb/y6q74PMgH6yizaDZlRmw6QyKw==
+  dependencies:
+    toggle-selection "^1.0.3"
+
 core-js@2.6.4:
   version "2.6.4"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.6.4.tgz#b8897c062c4d769dd30a0ac5c73976c47f92ea0d"
@@ -3614,7 +3605,7 @@ dom-matches@>=1.0.1:
   resolved "https://registry.yarnpkg.com/dom-matches/-/dom-matches-2.0.0.tgz#d2728b416a87533980eb089b848d253cf23a758c"
   integrity sha1-0nKLQWqHUzmA6wibhI0lPPI6dYw=
 
-dom-scroll-into-view@1.x, dom-scroll-into-view@^1.2.0:
+dom-scroll-into-view@1.x, dom-scroll-into-view@^1.2.0, dom-scroll-into-view@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/dom-scroll-into-view/-/dom-scroll-into-view-1.2.1.tgz#e8f36732dd089b0201a88d7815dc3f88e6d66c7e"
   integrity sha1-6PNnMt0ImwIBqI14Fdw/iObWbH4=
@@ -4689,13 +4680,6 @@ fragment-cache@^0.2.1:
   dependencies:
     map-cache "^0.2.2"
 
-framesync@^4.0.0, framesync@^4.0.1:
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/framesync/-/framesync-4.0.1.tgz#ed7791baf0d266f58ab02000456f82cb384815bf"
-  integrity sha512-7dF3SXz/xMdwSHFHgj8PV2dAUCFclXWhasAb06rFvAM2pX24m9eDs6X+ikK0kx92w/uIljUi0sBINwcbl0rT2Q==
-  dependencies:
-    hey-listen "^1.0.5"
-
 fresh@0.5.2:
   version "0.5.2"
   resolved "https://registry.yarnpkg.com/fresh/-/fresh-0.5.2.tgz#3d8cadd90d976569fa835ab1f8e4b23a105605a7"
@@ -5117,11 +5101,6 @@ hex-color-regex@^1.1.0:
   resolved "https://registry.yarnpkg.com/hex-color-regex/-/hex-color-regex-1.1.0.tgz#4c06fccb4602fe2602b3c93df82d7e7dbf1a8a8e"
   integrity sha512-l9sfDFsuqtOqKDsQdqrMRk0U85RZc0RtOR9yPI7mRVOa4FsR/BVnZ0shmQRM96Ji99kYZP/7hn1cedc1+ApsTQ==
 
-hey-listen@^1.0.4, hey-listen@^1.0.5:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/hey-listen/-/hey-listen-1.0.5.tgz#6d0a3a2f60177f65bc4404d571a00025bf5dc20e"
-  integrity sha512-O2iCNxBBGb4hOxL9tUdnoPwDYmZhQ29t5xKV74BVZNdvwCDXCpVYTJ4yoaibc1V0I8Yw3K3nwmvDpoyjnCqUaw==
-
 highlightjs@^9.12.0:
   version "9.12.0"
   resolved "https://registry.yarnpkg.com/highlightjs/-/highlightjs-9.12.0.tgz#9b84eb42a7aa8488eb69ac79fec44cf495bf72a1"
@@ -5302,15 +5281,6 @@ http-signature@~1.2.0:
     assert-plus "^1.0.0"
     jsprim "^1.2.2"
     sshpk "^1.7.0"
-
-httpplease@^0.16.4:
-  version "0.16.4"
-  resolved "https://registry.yarnpkg.com/httpplease/-/httpplease-0.16.4.tgz#d382ebe230ef5079080b4e9ffebf316a9e75c0da"
-  integrity sha1-04Lr4jDvUHkIC06f/r8xap51wNo=
-  dependencies:
-    urllite "~0.5.0"
-    xmlhttprequest "*"
-    xtend "~3.0.0"
 
 https-browserify@^1.0.0:
   version "1.0.0"
@@ -7125,7 +7095,7 @@ mobx@^5.9.0:
   resolved "https://registry.yarnpkg.com/mobx/-/mobx-5.9.0.tgz#a08edd7132787f771409c9c33788a5df66ff7ce7"
   integrity sha512-D3mY1uM3H9BP5duk5tTanrOq92yqetYKsprPJWvkKDrbs+fro59xrpWX+vtr10YoLgJIFz+a4A8lI+4YtqmCUQ==
 
-moment@2.x, moment@^2.22.2:
+moment@2.x, moment@^2.24.0:
   version "2.24.0"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.24.0.tgz#0d055d53f5052aa653c9f6eb68bb5d12bf5c2b5b"
   integrity sha512-bV7f+6l2QigeBBZSM/6yTNq4P2fNpSWj/0e7jQcy87A8e7o2nAfP/34/2ky5Vw4B9S446EtIhodAzkFCcR4dQg==
@@ -7942,31 +7912,6 @@ pnp-webpack-plugin@1.2.1:
   dependencies:
     ts-pnp "^1.0.0"
 
-popmotion-pose@^3.4.0:
-  version "3.4.2"
-  resolved "https://registry.yarnpkg.com/popmotion-pose/-/popmotion-pose-3.4.2.tgz#49e8f2db4f4f8aa6c19a55c13bd2f7ef997205cf"
-  integrity sha512-pe8t+48biQZEKuO0ubxNUSb4MiHw1+0dDuqnwvw+xIbqaHGUJPnLe/1j7JiD/F/Wf2LbxDvONoyCeBgJLi1B3w==
-  dependencies:
-    "@popmotion/easing" "^1.0.1"
-    hey-listen "^1.0.5"
-    popmotion "^8.5.0"
-    pose-core "^2.0.0"
-    style-value-types "^3.0.6"
-    tslib "^1.9.1"
-
-popmotion@^8.5.0:
-  version "8.6.1"
-  resolved "https://registry.yarnpkg.com/popmotion/-/popmotion-8.6.1.tgz#b2ea854f53d20eb5825d04edad8a267bb161c93b"
-  integrity sha512-VbMIP9yTyq7JuuvrstcW47KhXkpN2xuunDIk2vtHPbt8apyin+KFhNrcHRl2d+MN4BnxJURXHcRDFvlfYc3Y4g==
-  dependencies:
-    "@popmotion/easing" "^1.0.1"
-    "@popmotion/popcorn" "^0.3.0"
-    framesync "^4.0.0"
-    hey-listen "^1.0.5"
-    style-value-types "^3.0.6"
-    stylefire "^2.3.4"
-    tslib "^1.9.1"
-
 portfinder@^1.0.9:
   version "1.0.20"
   resolved "https://registry.yarnpkg.com/portfinder/-/portfinder-1.0.20.tgz#bea68632e54b2e13ab7b0c4775e9b41bf270e44a"
@@ -7975,16 +7920,6 @@ portfinder@^1.0.9:
     async "^1.5.2"
     debug "^2.2.0"
     mkdirp "0.5.x"
-
-pose-core@^2.0.0:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/pose-core/-/pose-core-2.0.2.tgz#6a0bd1e7218e4bf30be9c26a30be8eeb5b8695df"
-  integrity sha512-NWR8SELdQ+zhG+xD6nHDCdX/tu3fKAFUQ61hJdBic/7WSy/ABYfqpdQIsepBxPWQhHc8WLgPhRal831K/cWrwA==
-  dependencies:
-    "@types/invariant" "^2.2.29"
-    "@types/node" "^10.0.5"
-    hey-listen "^1.0.5"
-    tslib "^1.9.1"
 
 posix-character-classes@^0.1.0:
   version "0.1.1"
@@ -8871,24 +8806,6 @@ quill-image-resize-module-react@^3.0.0:
     quill "^1.2.2"
     raw-loader "^0.5.1"
 
-quill-image-resize-module@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/quill-image-resize-module/-/quill-image-resize-module-3.0.0.tgz#0fd93746a837336d95b2f536140416a623c71771"
-  integrity sha1-D9k3Rqg3M22VsvU2FAQWpiPHF3E=
-  dependencies:
-    lodash "^4.17.4"
-    quill "^1.2.2"
-    raw-loader "^0.5.1"
-
-quill-image-resize@^3.0.9:
-  version "3.0.9"
-  resolved "https://registry.yarnpkg.com/quill-image-resize/-/quill-image-resize-3.0.9.tgz#5677fb6257560bff951153ddbdb836758e49f804"
-  integrity sha512-5Dk0nixhbFsCwSWtPU9qqqtfM2gURfaP+pbBhQvAoMJoF4p99xbAibfAI3gsZJkbWUodoK2iAPf1V5oTSpv9ww==
-  dependencies:
-    lodash "^4.17.4"
-    quill "^1.2.2"
-    raw-loader "^0.5.1"
-
 quill@^1.2.2, quill@^1.2.6:
   version "1.3.6"
   resolved "https://registry.yarnpkg.com/quill/-/quill-1.3.6.tgz#99f4de1fee85925a0d7d4163b6d8328f23317a4d"
@@ -9024,16 +8941,17 @@ rc-checkbox@~2.1.5:
     prop-types "15.x"
     rc-util "^4.0.4"
 
-rc-collapse@~1.10.2:
-  version "1.10.2"
-  resolved "https://registry.yarnpkg.com/rc-collapse/-/rc-collapse-1.10.2.tgz#2136c9aca8f5f8e2af66d6454adde56693fa0f00"
-  integrity sha512-AtEE4rMXEBT05gScduc+NQf/257wqE0xk4tNX4N1DBq0qTx19xGcwX3EXDD+ZF8KuZ/A25pgmviXad/hthNQSg==
+rc-collapse@~1.11.1:
+  version "1.11.1"
+  resolved "https://registry.yarnpkg.com/rc-collapse/-/rc-collapse-1.11.1.tgz#4aa0977adbf5229d7db58205646b13905add72ad"
+  integrity sha512-9HA8f7aWE0yabnzfE2v/7IyMb6dTmj052A9cyEMB0aT1sdLESpetMAzT3FkLcPT5fl7YNRkyVZ3zwkC5qMmzmA==
   dependencies:
     classnames "2.x"
     css-animation "1.x"
     prop-types "^15.5.6"
     rc-animate "2.x"
     react-is "^16.7.0"
+    shallowequal "^1.1.0"
 
 rc-dialog@~7.3.0:
   version "7.3.0"
@@ -9114,10 +9032,10 @@ rc-hammerjs@~0.6.0:
     hammerjs "^2.0.8"
     prop-types "^15.5.9"
 
-rc-input-number@~4.3.7:
-  version "4.3.9"
-  resolved "https://registry.yarnpkg.com/rc-input-number/-/rc-input-number-4.3.9.tgz#35994556ebda84b7e6b1fb479784844b6b4a738a"
-  integrity sha512-u2ioYqAwHIbDpp6sUEIOv8kqQw8e7VfTR6Kn+wJYff7TBA3Zw2Ql9I4DQniuLXglCJzDiHqG1OR5v3kN3GrD4w==
+rc-input-number@~4.4.0:
+  version "4.4.0"
+  resolved "https://registry.yarnpkg.com/rc-input-number/-/rc-input-number-4.4.0.tgz#0ddaaab925a7b0d6c6dbc9eb157ca23e9529b8c7"
+  integrity sha512-AsXLVaQZ7rCU71B8zzP3nviL8/CkFGDcp5kIlpMzBdGIHoLyRnXcxei3itH9PfFSgMBixEnb5hFVoTikFbNWSQ==
   dependencies:
     babel-runtime "6.x"
     classnames "^2.2.0"
@@ -9181,10 +9099,10 @@ rc-rate@~2.5.0:
     rc-util "^4.3.0"
     react-lifecycles-compat "^3.0.4"
 
-rc-select@^8.6.7:
-  version "8.7.2"
-  resolved "https://registry.yarnpkg.com/rc-select/-/rc-select-8.7.2.tgz#2f143a72ea2135438669413c3a3e96c5a774a077"
-  integrity sha512-KSimx56UrRUQt4c8v2VQmBTrPCc9X9bKw1EITD6oUEaKOr4U6EUl+EeYhsGD6fUfEO61bXCCKBCbZu5NU0H52Q==
+rc-select@~9.0.0:
+  version "9.0.2"
+  resolved "https://registry.yarnpkg.com/rc-select/-/rc-select-9.0.2.tgz#ce0d297db5f8a5c7e8bbc3fc24d9ed5ba648012c"
+  integrity sha512-lwFz/aINmbznQmKvq/jFipc922h+RhA+iKCicxAglTqC4qmXg2REKWzviT5Tk0kqVe4mHcfNX8PyvMEHSmkaLA==
   dependencies:
     babel-runtime "^6.23.0"
     classnames "2.x"
@@ -9199,10 +9117,10 @@ rc-select@^8.6.7:
     react-lifecycles-compat "^3.0.2"
     warning "^4.0.2"
 
-rc-slider@~8.6.3:
-  version "8.6.4"
-  resolved "https://registry.yarnpkg.com/rc-slider/-/rc-slider-8.6.4.tgz#b9d9000180f2b89bb71b58717753164b479fc75f"
-  integrity sha512-CV2i2Ww6ib0EjFuBKvgjw3PgT6QwvWKC93iEpqPtrztZrx5wO9Iw//AUri4KHRqptW13AuBvFdEHovqLi6XFTw==
+rc-slider@~8.6.5:
+  version "8.6.6"
+  resolved "https://registry.yarnpkg.com/rc-slider/-/rc-slider-8.6.6.tgz#008c5a5ccf29d83787d846b6b1d0bbb8e2a121c8"
+  integrity sha512-byfnq1LbBFyZ0HURWo22sjeiKIxLyzSnIiNUsUf6SWu1ZhQe/Qt24JnE/ZJsqKoUirXxlX+d577ptfAybZHm+Q==
   dependencies:
     babel-runtime "6.x"
     classnames "^2.2.5"
@@ -9210,7 +9128,7 @@ rc-slider@~8.6.3:
     rc-tooltip "^3.7.0"
     rc-util "^4.0.4"
     shallowequal "^1.0.1"
-    warning "^3.0.0"
+    warning "^4.0.3"
 
 rc-steps@~3.3.0:
   version "3.3.1"
@@ -9281,27 +9199,40 @@ rc-tooltip@^3.7.0, rc-tooltip@~3.7.3:
     prop-types "^15.5.8"
     rc-trigger "^2.2.2"
 
-rc-tree-select@~2.5.0:
-  version "2.5.2"
-  resolved "https://registry.yarnpkg.com/rc-tree-select/-/rc-tree-select-2.5.2.tgz#94dbbb55238293aebff3a4e784dbd21c5e47c208"
-  integrity sha512-JdwCSF/xqTZ1XrBqdbpogKa7dyzwijY72JKyo8EYYu6XQS0aKeqdm8xOGyjmQLFUJ32XNJCyBI0WFLdvaG90LQ==
+rc-tree-select@~2.6.0:
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/rc-tree-select/-/rc-tree-select-2.6.0.tgz#8804a958422965f4cd28b6b599f3142542061b44"
+  integrity sha512-9svioSjzqqGeIK9XTuM5yNe0WteSro2Hc8/Go+CTGth6P/mflVC7vC0jTJlFVpFz+Aw1LzXcJFsbAyRwUiSaag==
   dependencies:
-    babel-runtime "^6.23.0"
     classnames "^2.2.1"
+    dom-scroll-into-view "^1.2.1"
     prop-types "^15.5.8"
     raf "^3.4.0"
     rc-animate "^3.0.0-rc.4"
-    rc-tree "~1.14.3"
+    rc-tree "~1.15.0"
     rc-trigger "^3.0.0-rc.2"
     rc-util "^4.5.0"
     react-lifecycles-compat "^3.0.4"
     shallowequal "^1.0.2"
     warning "^4.0.1"
 
-rc-tree@~1.14.3, rc-tree@~1.14.6:
+rc-tree@~1.14.6:
   version "1.14.9"
   resolved "https://registry.yarnpkg.com/rc-tree/-/rc-tree-1.14.9.tgz#a26634b401123471e187273dd2fd440de6b85958"
   integrity sha512-+B4657b3H0mTB4Jcd9EorydI1fevfJRukaTk/KYcbNzYhKgZFIEuT3PZrhJZoH/e+sBOEx04zSNA0uf6G6S/BA==
+  dependencies:
+    babel-runtime "^6.23.0"
+    classnames "2.x"
+    prop-types "^15.5.8"
+    rc-animate "^3.0.0-rc.5"
+    rc-util "^4.5.1"
+    react-lifecycles-compat "^3.0.4"
+    warning "^3.0.0"
+
+rc-tree@~1.15.0:
+  version "1.15.2"
+  resolved "https://registry.yarnpkg.com/rc-tree/-/rc-tree-1.15.2.tgz#a0d6f20fa2bdbe51d829d5ceea74a407b04bfea9"
+  integrity sha512-VPXLA/GdV6U9N8evpl4rmjRsBkw5BoweqWjcVBVwYGzBtonNIFpdc+bnb7TDmd6S3mKOM7mXPbiSr2GKYdj4hA==
   dependencies:
     babel-runtime "^6.23.0"
     classnames "2.x"
@@ -9469,18 +9400,10 @@ react-headroom@^2.2.4:
     raf "^3.3.0"
     shallowequal "^0.2.2"
 
-react-icons@^3.2.2:
-  version "3.3.0"
-  resolved "https://registry.yarnpkg.com/react-icons/-/react-icons-3.3.0.tgz#09409cad23c39149e419af5c928eee6f9f456b93"
-  integrity sha512-OY8yBAyww1VEro12Zbt6dZqz77zN7LXukC4oA4i4fWjxTjCbbqsPy6BrfAh7BYPtIRaTXhpoYlhdoDaT/kxdog==
-
-react-inlinesvg@^0.8.4:
-  version "0.8.4"
-  resolved "https://registry.yarnpkg.com/react-inlinesvg/-/react-inlinesvg-0.8.4.tgz#5cdcece95c633d924092fdcabbf4dcab8baef1bd"
-  integrity sha512-pMkYa09gsP+5mA5uYDon5TxJbu76rJqdPSQ9nTRZbVacH58Eo3tFxD0Z382cioxNrpeqWHI/hquzt00GaahnkA==
-  dependencies:
-    httpplease "^0.16.4"
-    once "^1.4.0"
+react-icons@^3.5.0:
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/react-icons/-/react-icons-3.5.0.tgz#a6135480e3bcbc63f5dd045193ef2a814263d8d1"
+  integrity sha512-LuKUcavgPWjPrRkIdNbsGw8LqcnhfNN0AGCtU4Td1UkOenJSIWbYppSJrD6zi/TDZOHtTs9opu6ZKB/NFWk21g==
 
 react-is@^16.6.0, react-is@^16.7.0:
   version "16.7.0"
@@ -9506,16 +9429,6 @@ react-page-progress@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/react-page-progress/-/react-page-progress-1.1.0.tgz#d583d69073ae7aa3a763ee0a7861f13eb12e57b8"
   integrity sha512-QbreC9YKDGLuECvZWCxGycYAvYKMIMDCyTuoXexNZ2FuqNYysU5lpbV2Hl+TeboRIaoBghSnBX+vIyOZiknVjQ==
-
-react-pose@^4.0.4:
-  version "4.0.6"
-  resolved "https://registry.yarnpkg.com/react-pose/-/react-pose-4.0.6.tgz#265a9814eea48898dd653a92e998fc86a1366fb4"
-  integrity sha512-4i72lsjpvJT6nwbTrMtbZiZoJ65REIVtDm1u1ruEriJcBOoNNQSTkFUAdjBG6pOaATkk9OWgziBuz4PU1GI0bA==
-  dependencies:
-    "@emotion/is-prop-valid" "^0.7.3"
-    hey-listen "^1.0.5"
-    popmotion-pose "^3.4.0"
-    tslib "^1.9.1"
 
 react-quill@^1.3.3:
   version "1.3.3"
@@ -9610,7 +9523,7 @@ react-scripts@2.1.5:
   optionalDependencies:
     fsevents "1.2.4"
 
-react-slick@~0.23.2:
+react-slick@^0.23.2, react-slick@~0.23.2:
   version "0.23.2"
   resolved "https://registry.yarnpkg.com/react-slick/-/react-slick-0.23.2.tgz#8d8bdbc77a6678e8ad36f50c32578c7c0f1c54f6"
   integrity sha512-fM6DXX7+22eOcYE9cgaXUfioZL/Zw6fwS6aPMDBt0kLHl4H4fFNEbp4JsJQdEWMLUNFtUytNcvd9KRml22Tp5w==
@@ -10343,6 +10256,11 @@ slice-ansi@^2.1.0:
     astral-regex "^1.0.0"
     is-fullwidth-code-point "^2.0.0"
 
+slick-carousel@^1.8.1:
+  version "1.8.1"
+  resolved "https://registry.yarnpkg.com/slick-carousel/-/slick-carousel-1.8.1.tgz#a4bfb29014887bb66ce528b90bd0cda262cc8f8d"
+  integrity sha512-XB9Ftrf2EEKfzoQXt3Nitrt/IPbT+f1fgqBdoxO3W/+JYvtEOW6EgxnWfr9GH6nmULv7Y2tPmEX3koxThVmebA==
+
 snapdragon-node@^2.0.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/snapdragon-node/-/snapdragon-node-2.1.1.tgz#6c175f86ff14bdb0724563e8f3c1b021a286853b"
@@ -10725,11 +10643,6 @@ style-loader@0.23.1:
     loader-utils "^1.1.0"
     schema-utils "^1.0.0"
 
-style-value-types@^3.0.6, style-value-types@^3.0.7:
-  version "3.0.7"
-  resolved "https://registry.yarnpkg.com/style-value-types/-/style-value-types-3.0.7.tgz#6e7a22cc8b1a4465193268ed66ad5f2a82579054"
-  integrity sha512-7vzeicDiPNnJjvTYfJbQhZ7P3OCkXfvkJOJQ+ifFnXNTA/7KBxMZacHLvlRjM5/TtXbVdrZE6u+2nzSUSPrbSQ==
-
 styled-components@^4.1.3:
   version "4.1.3"
   resolved "https://registry.yarnpkg.com/styled-components/-/styled-components-4.1.3.tgz#4472447208e618b57e84deaaeb6acd34a5e0fe9b"
@@ -10746,15 +10659,6 @@ styled-components@^4.1.3:
     stylis "^3.5.0"
     stylis-rule-sheet "^0.0.10"
     supports-color "^5.5.0"
-
-stylefire@^2.3.4:
-  version "2.3.7"
-  resolved "https://registry.yarnpkg.com/stylefire/-/stylefire-2.3.7.tgz#285b86a48f6c25bbdcccb5dafa26b9f578235bb5"
-  integrity sha512-0JSN+tIZDYda3RYEFK5j8GZjeVIHggyvOCySM0LmOLx/1QUVixMEIM2SyXohj6RgyNEiIxCaVHGaComq/k0KBw==
-  dependencies:
-    framesync "^4.0.0"
-    hey-listen "^1.0.4"
-    style-value-types "^3.0.6"
 
 stylehacks@^4.0.0:
   version "4.0.1"
@@ -11000,6 +10904,11 @@ to-regex@^3.0.1, to-regex@^3.0.2:
     regex-not "^1.0.2"
     safe-regex "^1.1.0"
 
+toggle-selection@^1.0.3:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/toggle-selection/-/toggle-selection-1.0.6.tgz#6e45b1263f2017fa0acc7d89d78b15b8bf77da32"
+  integrity sha1-bkWxJj8gF/oKzH2J14sVuL932jI=
+
 topo@2.x.x:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/topo/-/topo-2.0.2.tgz#cd5615752539057c0dc0491a621c3bc6fbe1d182"
@@ -11076,7 +10985,7 @@ ts-pnp@^1.0.0:
   resolved "https://registry.yarnpkg.com/ts-pnp/-/ts-pnp-1.0.0.tgz#44a3a9e8c13fcb711bcda75d7b576c21af120c9d"
   integrity sha512-qgwM7eBrxFvZSXLtSvjf3c2mXwJOOGD49VlE+KocUGX95DuMdLc/psZHBnPpZL5b2NU7VtQGHRCWF3cNfe5kxQ==
 
-tslib@^1.9.0, tslib@^1.9.1, tslib@^1.9.3:
+tslib@^1.9.0, tslib@^1.9.3:
   version "1.9.3"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.9.3.tgz#d7e4dd79245d85428c4d7e4822a79917954ca286"
   integrity sha512-4krF8scpejhaOgqzBEcGM7yDIEfi0/8+8zDRZhNZZ2kjmHJ4hv3zCbQWxoJGz1iw5U0Jl0nma13xzHXcncMavQ==
@@ -11277,13 +11186,6 @@ url@^0.11.0:
     punycode "1.3.2"
     querystring "0.2.0"
 
-urllite@~0.5.0:
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/urllite/-/urllite-0.5.0.tgz#1b7bb9ca3fb0db9520de113466bbcf7cc341451a"
-  integrity sha1-G3u5yj+w25Ug3hE0ZrvPfMNBRRo=
-  dependencies:
-    xtend "~4.0.0"
-
 use@^3.1.0:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/use/-/use-3.1.1.tgz#d50c8cac79a19fbc20f2911f56eb973f4e10070f"
@@ -11419,6 +11321,13 @@ warning@^4.0.1, warning@^4.0.2, warning@~4.0.2:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/warning/-/warning-4.0.2.tgz#aa6876480872116fa3e11d434b0d0d8d91e44607"
   integrity sha512-wbTp09q/9C+jJn4KKJfJfoS6VleK/Dti0yqWSm6KMvJ4MRCXFQNapHuJXutJIrWV0Cf4AhTdeIe4qdKHR1+Hug==
+  dependencies:
+    loose-envify "^1.0.0"
+
+warning@^4.0.3:
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/warning/-/warning-4.0.3.tgz#16e9e077eb8a86d6af7d64aa1e05fd85b4678ca3"
+  integrity sha512-rpJyN222KWIvHJ/F53XSZv0Zl/accqHR8et1kpaMTD/fLCRxtV8iX8czMzY7sVZupTI3zcUTg8eycS2kNF9l6w==
   dependencies:
     loose-envify "^1.0.0"
 
@@ -11814,25 +11723,15 @@ xml-name-validator@^3.0.0:
   resolved "https://registry.yarnpkg.com/xml-name-validator/-/xml-name-validator-3.0.0.tgz#6ae73e06de4d8c6e47f9fb181f78d648ad457c6a"
   integrity sha512-A5CUptxDsvxKJEU3yO6DuWBSJz/qizqzJKOMIfUJHETbBw/sFaDxgd6fxm1ewUaM0jZ444Fc5vC5ROYurg/4Pw==
 
-xmlhttprequest@*:
-  version "1.8.0"
-  resolved "https://registry.yarnpkg.com/xmlhttprequest/-/xmlhttprequest-1.8.0.tgz#67fe075c5c24fef39f9d65f5f7b7fe75171968fc"
-  integrity sha1-Z/4HXFwk/vOfnWX197f+dRcZaPw=
-
 xregexp@4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/xregexp/-/xregexp-4.0.0.tgz#e698189de49dd2a18cc5687b05e17c8e43943020"
   integrity sha512-PHyM+sQouu7xspQQwELlGwwd05mXUFqwFYfqPO0cC7x4fxyHnnuetmQr6CjJiafIDoH4MogHb9dOoJzR/Y4rFg==
 
-xtend@^4.0.0, xtend@^4.0.1, xtend@~4.0.0, xtend@~4.0.1:
+xtend@^4.0.0, xtend@^4.0.1, xtend@~4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/xtend/-/xtend-4.0.1.tgz#a5c6d532be656e23db820efb943a1f04998d63af"
   integrity sha1-pcbVMr5lbiPbgg77lDofBJmNY68=
-
-xtend@~3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/xtend/-/xtend-3.0.0.tgz#5cce7407baf642cba7becda568111c493f59665a"
-  integrity sha1-XM50B7r2Qsunvs2laBEcST9ZZlo=
 
 y18n@^3.2.1:
   version "3.2.1"

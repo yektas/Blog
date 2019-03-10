@@ -16,14 +16,14 @@ const menu = (
         <a href="http://www.taobao.com/">View profile</a>
       </Menu.Item>
       <Menu.Divider />
-      <Menu.Item key="3"><span style={{ color: "red"}}>Logout</span></Menu.Item>
+      <Menu.Item key="3"><span style={{ color: "#e94828"}}>Logout</span></Menu.Item>
     </Menu>
   );
 
 
 const UserMenu  = (props) => (
     <Dropdown overlay={menu} trigger={['click']}>
-      <Avatar style={{ backgroundColor: '#e76969' }} icon="user" />
+      <Avatar style={{ backgroundColor: '#e94828' }} icon="user" />
     </Dropdown>
     );
 

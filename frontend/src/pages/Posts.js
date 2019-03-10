@@ -1,8 +1,10 @@
 import gql from 'graphql-tag';
 import React, { Component } from 'react';
 import { Query } from 'react-apollo';
+import Slider from "react-slick";
 import { Link } from 'react-router-dom';
-import { MainLayout } from '../components/Layout';
+import { MainLayout, HomeLayout } from '../components/Layout';
+import Carousel from '../components/Carousel/Carousel';
 
 const GET_POSTS = gql`
 	{
@@ -23,7 +25,8 @@ class Posts extends Component {
 					if (error) return <div>Error</div>;
 
 					return (
-						<MainLayout>
+						<HomeLayout>
+							<Carousel />
 							{data.allPosts.map(post => (
 								<div key={post.id}>
 									<h1>
@@ -33,7 +36,7 @@ class Posts extends Component {
 									</h1>
 								</div>
 							))}
-						</MainLayout>
+						</HomeLayout>
 					);
 				}}
 			</Query>

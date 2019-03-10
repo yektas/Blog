@@ -71,7 +71,6 @@ class NewPost extends React.Component {
                                 />
                                 <Col span={2} offset={16}>
                                     <OutlineButton
-                                        ghost
                                         type='primary'
                                         onClick={() => this.handlePublish(props.values.title)}
                                     >

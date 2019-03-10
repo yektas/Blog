@@ -1,8 +1,7 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
-import './highlight.js';
-import styled from 'styled-components';
 import { Icon } from 'antd';
+import './highlight.js';
 import ReactQuill, { Quill } from 'react-quill';
 import { observer } from 'mobx-react';
 import ImageResize from 'quill-image-resize-module-react';
@@ -133,7 +132,8 @@ const formats = [
 class PostEditorComponent extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { text: '' }; // Placeholder delta text for testing..
+        const initialValue = props.initialText
+        this.state = { text: initialValue ? initialValue : '' }; // Placeholder delta text for testing..
 
         this.handleChange = this.handleChange.bind(this);
         this.quillRef = null; // Quill instance

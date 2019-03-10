@@ -1,0 +1,11 @@
+.slider {
+    height: calc(80vh - 126px);
+}
+
+.slider__cover-image {
+    height: 536px;
+    max-height: 70vh;
+    background-size: cover;
+    background-position: 48% 42% !important;
+    width: 100%;
+}
