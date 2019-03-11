@@ -1,16 +1,16 @@
 import json
 
 import graphene
-from graphql import GraphQLError
-
-from comments.models import Comment
 from django.contrib.auth.models import User
 from graphene import relay, ObjectType, InputObjectType, String, Boolean
 from graphene_django import DjangoObjectType
 from graphene_django.converter import convert_django_field
-from posts.models import Post, Category
-from taggit.managers import TaggableManager
 from graphene_file_upload.scalars import Upload
+from graphql import GraphQLError
+from taggit.managers import TaggableManager
+
+from comments.models import Comment
+from posts.models import Post, Category
 
 
 @convert_django_field.register(TaggableManager)
@@ -58,8 +58,8 @@ def update_create_instance(post_data):
     content = json.loads(post_data.content)
     if post_id is not None:
         print("a")
-    post, _ = Post.objects.get_or_create(id=post_data,
-                                         title=post_data.title,
+        # TODO update post with id.
+    post, _ = Post.objects.get_or_create(title=post_data.title,
                                          excerpt=post_data.excerpt,
                                          image=post_data.image,
                                          content=content,
