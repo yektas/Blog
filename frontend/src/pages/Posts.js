@@ -2,11 +2,9 @@ import gql from 'graphql-tag';
 import React, { Component } from 'react';
 import { Query } from 'react-apollo';
 import Slider from "react-slick";
-import AOS from "aos";
 import { Link } from 'react-router-dom';
 import { MainLayout, HomeLayout } from '../components/Layout';
 import Carousel from '../components/Carousel/Carousel';
-import PostCard from '../components/common/PostCard';
 
 const GET_POSTS = gql`
 	{
@@ -19,10 +17,6 @@ const GET_POSTS = gql`
 `;
 
 class Posts extends Component {
-	constructor(props){
-		super(props);
-		AOS.init();
-	}
 	render() {
 		return (
 			<Query query={GET_POSTS}>
@@ -33,9 +27,8 @@ class Posts extends Component {
 					return (
 						<HomeLayout>
 							<Carousel />
-							<PostCard />
 							{data.allPosts.map(post => (
-								<div data-aos="fade-in" key={post.id}>
+								<div key={post.id}>
 									<h1>
 										<Link to={`/blog/post/${post.slug}`}>
 											{post.title}
