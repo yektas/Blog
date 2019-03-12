@@ -58,8 +58,10 @@ const menu = (
 class HeaderClass extends Component {
     constructor() {
         super();
+        
+        const userTheme = localStorage.getItem("userTheme");
         this.state = {
-            theme: localStorage.getItem('userTheme'),
+            theme: userTheme != null ? userTheme : 'dark',
             showAuthModal: false
         };
         const theme = this.state.theme;
@@ -77,8 +79,9 @@ class HeaderClass extends Component {
 
     toggleTheme () {
         const theme = this.state.theme;
-        this.setState({ theme: theme === 'dark' ? 'light' : 'dark'})
         changeTheme(theme, false)
+        this.setState({ theme: theme === 'dark' ? 'light' : 'dark'})
+        
     }
 
     render() {

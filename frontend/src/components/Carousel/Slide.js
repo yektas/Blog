@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Typography } from 'antd';
+import { Link } from 'react-router-dom';
 import AuthorCard from './AuthorCard';
 
 const { Title, Text, Paragraph } = Typography;
@@ -21,9 +22,11 @@ const Slide = props => {
                     <div style={{ marginTop: "50px", marginBottom: "20px" }}>
                         <AuthorCard name="A.Sercan Yektaş" time="Mar 8" readTime="7" />
                     </div>
-                    <Title style={{fontSize: "60px"}}>
-                        {title}
-                    </Title>
+                    
+                        <Title style={{ color:"initial",    fontSize: "60px"}}>
+                        <Link to="/">{title}</Link>
+                        </Title>
+                        
                     <Title ellipsis={{ rows: 3}} level={4}>
                         {subtitle}
                     </Title>

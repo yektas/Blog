@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Layout, Row, Col } from 'antd';
 import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
-import ChangeThemeSwitch from '../Header/ChangeThemeSwitch';
+import ChangeThemeSwitch from '../common/ChangeThemeSwitch';
 import themes from '../../themes';
 import UserMenu from '../Menu/UserMenu';
 const { Header: AntHeader } = Layout;
