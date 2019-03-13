@@ -90,7 +90,7 @@ code {
 }
 
 .ant-typography > a {
-    color: initial;
+    color: inherit;
 }
 
 .ant-typography > a:focus {

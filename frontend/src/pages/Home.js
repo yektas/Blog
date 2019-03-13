@@ -1,63 +1,51 @@
-import React, {Component} from 'react';
-import axios from "axios";
-import { Link } from "react-router-dom";
-import { Button } from "antd";
+import gql from 'graphql-tag';
+import React, { Component } from 'react';
+import { Query } from 'react-apollo';
+import Slider from "react-slick";
+import { Link } from 'react-router-dom';
+import { MainLayout, HomeLayout } from '../components/Layout';
+import PostCard from "../components/common/PostCard";
+import Carousel from '../components/Carousel/Carousel';
+import SectionTitle from '../components/common/SectionTitle';
 
-
-const graphql = axios.create({
-    baseURL: 'http://localhost:8000/graphql',
-});
-
-const GET_POSTS = `
-  {
-  allPosts {
-    id
-    title
-    content
-  }
-}
+const GET_POSTS = gql`
+	{
+		allPosts {
+			id
+			title
+			slug
+		}
+	}
 `;
 
 class Home extends Component {
-    state = {
-        posts: null,
-        errors: null
-    };
+	render() {
+		return (
+			<Query query={GET_POSTS}>
+				{({ loading, error, data }) => {
+					if (loading) return <div>Fetching</div>;
+					if (error) return <div>Error</div>;
 
-
-    fetchPosts = () => {
-        graphql
-            .post('', {query: GET_POSTS})
-            .then(result => {
-                console.log(result);
-                    this.setState(() => ({
-                        posts: result.data.data.allPosts,
-                        errors: result.data.errors,
-                    }))
-                }
-            );
-    };
-
-
-    render() {
-        return (
-            <div>
-                <Link to="/new-post">Create a new post</Link>
-                <h1> Home Page </h1>
-                
-                <Button type="primary" onClick={this.fetchPosts}> Get posts </Button>
-                <ul>
-                    {this.state.posts &&
-                    this.state.posts.map(post => (
-                        <div key={post.id}>
-                            <h3>{post.title}</h3>
-                            <p>{post.content}</p>
-                        </div>
-                    ))}
-                </ul>
-            </div>
-        );
-    }
+					return (
+						<HomeLayout>
+							<Carousel />
+							<SectionTitle style={{ marginTop: 50, marginBottom: 25 }} />
+							<PostCard image="https://via.placeholder.com/600x400" />
+							{data.allPosts.map(post => (
+								<div key={post.id}>
+									<h1>
+										<Link to={`/blog/post/${post.slug}`}>
+											{post.title}
+										</Link>
+									</h1>
+								</div>
+							))}
+						</HomeLayout>
+					);
+				}}
+			</Query>
+		);
+	}
 }
 
 export default Home;

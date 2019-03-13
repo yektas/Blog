@@ -13,6 +13,13 @@ const slides = [
       have an obsession with solving the problems of reality, \
        once you reach a basic level \
        the problems of reality, once you reach a basic level'
+    },
+    { index: 3, title: 'How to be an expert in Python in 2019', subtitle: 'Hello 1' },
+    { index: 4, title: 'Blog Can Be Everything Nowadays',
+     subtitle: 'Engineers, medical people, scientific people, \
+      have an obsession with solving the problems of reality, \
+       once you reach a basic level \
+       the problems of reality, once you reach a basic level'
     }
 ];
 
