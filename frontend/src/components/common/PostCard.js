@@ -1,14 +1,9 @@
 import React, { Component } from 'react';
-import { Card as AntCard, Row, Col, Typography } from "antd";
+import { Card as AntCard, Typography } from "antd";
 import styled from "styled-components";
-import Zoom from 'react-reveal/Zoom';
-import Reveal from 'react-reveal/Reveal';
-import Fade from 'react-reveal/Fade';
-import Jump from 'react-reveal/Jump';
 import { FaEye, FaComment } from 'react-icons/fa';
 
 const { Title, Text  } = Typography;
-const { Meta } = AntCard;
 
 
 const CardHeader = styled.div`
@@ -33,10 +28,6 @@ const CardHeader = styled.div`
 
 const Card = styled(AntCard)`
     background: transparent
-`
-
-const BGWrapper = styled.div`
-
 `
 
 const CardHeaderWrapper = styled.div`
@@ -74,9 +65,7 @@ class PostCard extends Component {
                         <CardHeaderCategory>
                             {post.category}
                         </CardHeaderCategory>
-                        <BGWrapper>
-                            <CardHeader image={post.image}/>
-                        </BGWrapper>
+                        <CardHeader image={post.image}/>
                     </CardHeaderWrapper>}
         >
             <ContentWrapper>
