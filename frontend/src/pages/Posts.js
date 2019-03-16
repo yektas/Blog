@@ -1,9 +1,8 @@
 import gql from 'graphql-tag';
 import React, { Component } from 'react';
 import { Query } from 'react-apollo';
-import Slider from "react-slick";
 import { Link } from 'react-router-dom';
-import { MainLayout, HomeLayout } from '../components/Layout';
+import { HomeLayout } from '../components/Layout';
 import PostCard from "../components/common/PostCard";
 import Carousel from '../components/Carousel/Carousel';
 import SectionTitle from '../components/common/SectionTitle';

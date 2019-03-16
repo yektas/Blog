@@ -1,8 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Typography } from 'antd';
-import Zoom from 'react-reveal/Zoom';
-import Bounce from 'react-reveal/Bounce';
 import { Link } from 'react-router-dom';
 import AuthorCard from './AuthorCard';
 
@@ -13,7 +11,6 @@ const Slide = props => {
     return (
         <div index={index} >
             <div className='slider' style={{ display: 'flex'}}>
-            <Zoom>
                 <div
                     style={{
                         display: 'flex',
@@ -36,14 +33,11 @@ const Slide = props => {
                             {subtitle}
                         </Title>
                          </div>
-                    </Zoom>
-                    <Zoom>
                 <div style={{ flex: 1 }}>
                     <div className="slider__cover-image"
                         style={{backgroundImage: "url('https://codeless.co/thype/blog/wp-content/uploads/2018/12/Depositphotos_200162996_xl-2015.jpg)"}}>
                     </div>
                 </div>
-                </Zoom>
             </div>
         </div>
     );

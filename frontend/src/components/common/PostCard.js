@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
-import { Card, Row, Col } from "antd";
+import { Card as AntCard, Row, Col, Typography } from "antd";
 import styled from "styled-components";
 import Zoom from 'react-reveal/Zoom';
 import Reveal from 'react-reveal/Reveal';
 import Fade from 'react-reveal/Fade';
 import Jump from 'react-reveal/Jump';
+import { FaEye, FaComment } from 'react-icons/fa';
+
+const { Title, Text  } = Typography;
+const { Meta } = AntCard;
+
 
 const CardHeader = styled.div`
     min-height: 300px;
@@ -12,14 +17,39 @@ const CardHeader = styled.div`
     background-size: cover;
     background-position: 48% 42% !important;
     width: 100%;
-    background-image: url("https://codeless.co/thype/blog/wp-content/uploads/2018/12/Depositphotos_74897491_xl-2015-1-744x620.jpg")
+    background-image: url("${props => props.image}");
+
+    :before {
+        content: '';
+        background-color: rgba(0,0,0,0.4);
+        display: block;
+        position: absolute;
+        min-height: 300px;
+        max-height: calc(80vh - 126px);
+        width: 100%;
+
+    }
+`
+
+const Card = styled(AntCard)`
+    background: transparent
+`
+
+const BGWrapper = styled.div`
+
 `
 
 const CardHeaderWrapper = styled.div`
     box-shadow: 0px 0px 23px -8px rgba(0,0,0,0.71);
 `
 
+const ContentWrapper = styled.div`
+    padding: 14px 0px 0px 0px;
+    background: transparent;
+`
+
 const CardHeaderCategory = styled.h4`
+      color: #fff !important;
       position: absolute;
       top: 15px;
       left: 20px;
@@ -34,56 +64,28 @@ class PostCard extends Component {
     
 
   render() {
-    const { image } = this.props;
+    const { post } = this.props;
     return (
-        <Row style={{ marginTop: 20 }}>
-            <Fade bottom cascade>
+        <Card
+                bordered={false}
+                bodyStyle={{ padding: 0}}
+                style={{ marginRight: 20 }}
+                cover={<CardHeaderWrapper>
+                        <CardHeaderCategory>
+                            {post.category}
+                        </CardHeaderCategory>
+                        <BGWrapper>
+                            <CardHeader image={post.image}/>
+                        </BGWrapper>
+                    </CardHeaderWrapper>}
+        >
+            <ContentWrapper>
+                <Title level={3}>{post.title}</Title>
                 <div>
-                    <Col span={8}>
-                        <Card
-                                hoverable
-                                bordered={false}
-                                style={{ marginRight: 20 }}
-                                cover={<CardHeaderWrapper>
-                                        <CardHeaderCategory>
-                                            CULTURE
-                                        </CardHeaderCategory>
-                                        <CardHeader />
-                                    </CardHeaderWrapper>}
-                        >               
-                        </Card>
-                    </Col>
-                    <Col span={8}>
-                        <Card
-                                hoverable
-                                bordered={false}
-                                style={{ marginRight: 20 }}
-                                cover={<CardHeaderWrapper>
-                                        <CardHeaderCategory>
-                                            CULTURE
-                                        </CardHeaderCategory>
-                                        <CardHeader />
-                                    </CardHeaderWrapper>}
-                        >               
-                        </Card>
-                    </Col>
-                    <Col span={8}>
-                        <Card
-                                hoverable
-                                bordered={false}
-                                style={{ marginRight: 20 }}
-                                cover={<CardHeaderWrapper>
-                                        <CardHeaderCategory>
-                                            CULTURE
-                                        </CardHeaderCategory>
-                                        <CardHeader />
-                                    </CardHeaderWrapper>}
-                        >               
-                        </Card>
-                    </Col>
+                    <Text>December 7,2018 | 0 <FaComment /> 10 <FaEye /> </Text>
                 </div>
-            </Fade>
-        </Row>
+            </ContentWrapper>
+        </Card>
     )
   }
 }

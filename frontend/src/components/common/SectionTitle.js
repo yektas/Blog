@@ -15,7 +15,7 @@ const Title = styled(AntTitle)`
 const SectionTitle = props => {
   return (
         <Title {...props} level={4}>
-            Latest Posts
+            {props.children}
         </Title>
   )
 }

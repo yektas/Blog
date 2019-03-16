@@ -7,6 +7,7 @@ import './App.css';
 import Routes from './Routes';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { ApolloClient } from "apollo-client";
+import ScrollToTop from "./utils/ScrollToTop";
 
 const client = new ApolloClient({
 	link: createUploadLink({
@@ -19,7 +20,9 @@ class App extends Component {
 		return (
 			<ApolloProvider client={client}>
 				<Router>
-					<Routes />
+					<ScrollToTop>
+						<Routes />
+					</ScrollToTop>
 				</Router>
 			</ApolloProvider>
 		);
