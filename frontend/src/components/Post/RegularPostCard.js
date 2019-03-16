@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Card as AntCard, Typography } from "antd";
 import styled from "styled-components";
+import { Link } from 'react-router-dom';
 import { FaEye, FaComment } from 'react-icons/fa';
+import PostMeta from './PostMeta';
 
 const { Title, Text  } = Typography;
 
@@ -16,7 +18,7 @@ const CardHeader = styled.div`
 
     :before {
         content: '';
-        background-color: rgba(0,0,0,0.4);
+        background-color: rgba(0,0,0,0.2);
         display: block;
         position: absolute;
         min-height: 300px;
@@ -51,7 +53,7 @@ const CardHeaderCategory = styled.h4`
 `
 
 
-class PostCard extends Component {
+class RegularPostCard extends Component {
     
 
   render() {
@@ -62,17 +64,18 @@ class PostCard extends Component {
                 bodyStyle={{ padding: 0}}
                 style={{ marginRight: 20 }}
                 cover={<CardHeaderWrapper>
-                        <CardHeaderCategory>
-                            {post.category}
-                        </CardHeaderCategory>
                         <CardHeader image={post.image}/>
                     </CardHeaderWrapper>}
         >
             <ContentWrapper>
-                <Title level={3}>{post.title}</Title>
-                <div>
-                    <Text>December 7,2018 | 0 <FaComment /> 10 <FaEye /> </Text>
-                </div>
+                <CardHeaderCategory>
+                    {post.category}
+                </CardHeaderCategory>
+                <Title level={3}>
+                    <Link to={`/blog/post/${post.slug}`}>{post.title}</Link>
+                </Title>
+                <PostMeta metaData={post.metaData} />
+                <Text ellipsis={{rows: 4 }}>{post.content}</Text>
             </ContentWrapper>
         </Card>
     )
@@ -80,4 +83,4 @@ class PostCard extends Component {
 }
 
 
-export default PostCard;
+export default RegularPostCard;

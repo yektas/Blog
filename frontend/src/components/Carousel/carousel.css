@@ -7,5 +7,5 @@
     max-height: calc(80vh - 126px);
     background-size: cover;
     background-position: 48% 42% !important;
-    width: 100%;
+    width: calc(100% - 20px);
 }

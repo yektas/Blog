@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { Query } from 'react-apollo';
 import { Link } from 'react-router-dom';
 import { HomeLayout } from '../components/Layout';
-import PostCard from "../components/common/PostCard";
+import PostCard from "../components/Post/PostCard";
 import Carousel from '../components/Carousel/Carousel';
 import SectionTitle from '../components/common/SectionTitle';
 

@@ -21,8 +21,7 @@ class HomeLayout extends React.Component {
 				{showHeader && <HeaderV2 />}
 				<Content
 					style={{
-						padding: '0 50px',
-						minHeight: 1080
+						padding: '0 50px'
 					}}>
 					<Row style={{ marginTop: 20 }}>
 						<Col span={16} offset={4}>

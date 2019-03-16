@@ -7,7 +7,6 @@ const { Title: AntTitle } = Typography;
 
 
 const Title = styled(AntTitle)`
-    line-height: 28px;
     text-transform: uppercase;
 `
 
