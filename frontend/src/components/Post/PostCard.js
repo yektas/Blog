@@ -18,7 +18,6 @@ const CardHeader = styled.div`
 
     :before {
         content: '';
-        background-color: rgba(0,0,0,0.2);
         display: block;
         position: absolute;
         min-height: 300px;

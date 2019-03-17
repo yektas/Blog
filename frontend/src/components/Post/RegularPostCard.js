@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import { Card as AntCard, Typography } from "antd";
 import styled from "styled-components";
 import { Link } from 'react-router-dom';
-import { FaEye, FaComment } from 'react-icons/fa';
+import ReactQuill from 'react-quill';
 import PostMeta from './PostMeta';
+import AuthorCard from '../Carousel/AuthorCard';
+import { Delta } from 'quill';
 
 const { Title, Text  } = Typography;
 
@@ -18,7 +20,7 @@ const CardHeader = styled.div`
 
     :before {
         content: '';
-        background-color: rgba(0,0,0,0.2);
+        // background-color: rgba(0,0,0,0.2);
         display: block;
         position: absolute;
         min-height: 300px;
@@ -58,24 +60,25 @@ class RegularPostCard extends Component {
 
   render() {
     const { post } = this.props;
+    //TODO Find a way to peek the content from delta format.
+    const metaData = { date: "December 12, 2018", commentCount: 5, views: 1000}
     return (
         <Card
                 bordered={false}
                 bodyStyle={{ padding: 0}}
                 style={{ marginRight: 20 }}
-                cover={<CardHeaderWrapper>
-                        <CardHeader image={post.image}/>
-                    </CardHeaderWrapper>}
         >
             <ContentWrapper>
-                <CardHeaderCategory>
-                    {post.category}
-                </CardHeaderCategory>
+                <AuthorCard name="A.Sercan Yektaş" time="Mar 8" readTime="7" />
                 <Title level={3}>
                     <Link to={`/blog/post/${post.slug}`}>{post.title}</Link>
                 </Title>
-                <PostMeta metaData={post.metaData} />
-                <Text ellipsis={{rows: 4 }}>{post.content}</Text>
+                <Text>
+                    Engineers, medical people, scientific people, have an obsession with
+                    solving the problems of reality, once you reach a basic level of wealth
+                    in create entire designs with
+                </Text>
+                <PostMeta metaData={metaData} />
             </ContentWrapper>
         </Card>
     )

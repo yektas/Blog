@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import gql from "graphql-tag";
 import { Query, graphql } from "react-apollo";
 import ReactQuill from 'react-quill';
-import { Button } from "antd";
 import { MainLayout } from '../components/Layout';
 import CommentAntd from '../components/Comment/CommentAntd';
 import "../components/Editor/editor.css";

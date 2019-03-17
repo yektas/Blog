@@ -20,7 +20,7 @@ class Post(models.Model):
     excerpt = models.TextField()
     slug = models.SlugField(unique=True, editable=False)
     image = models.ImageField(upload_to=upload_file)
-    content = JSONField()
+    content = models.TextField()
     is_draft = models.BooleanField(default=False)
     published_on = models.DateTimeField(auto_now_add=True)
     read_time = models.IntegerField(default=0)

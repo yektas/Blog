@@ -18,6 +18,7 @@ const GET_POSTS = gql`
 			id
 			title
 			slug
+			content
 		}
 	}
 `;
@@ -54,14 +55,22 @@ class Home extends Component {
 								</Fade>
 							</Row>
 							<Row style={{ marginTop: 20 }}>
+							<Fade left cascade>
 								<Col span={17}>
-									{popularPosts.map(post => (
-										<RegularPostCard post={post} />
-										))}
+									{data.allPosts.map(post => (
+										<Col span={12}>
+												<RegularPostCard post={post} />
+										</Col>
+								))}
 								</Col>
+							</Fade>
 								<Col span={7}>
-									<AboutMeCard />
-									<CategoryMenu />
+									<Fade right>
+										<AboutMeCard />
+									</Fade>
+									<Fade right>
+										<CategoryMenu />
+									</Fade>
 								</Col>
 							</Row>
 						</HomeLayout>
