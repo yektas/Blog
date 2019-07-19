@@ -1,183 +1,75 @@
-import React from 'react';
-import ReactDOMServer from 'react-dom/server';
-import { Icon } from 'antd';
-import './highlight.js';
-import ReactQuill, { Quill } from 'react-quill';
-import { observer } from 'mobx-react';
-import ImageResize from 'quill-image-resize-module-react';
-import { ImageDrop } from 'quill-image-drop-module';
-import PostStore from '../../store/PostStore';
-import './editor.css';
+import React from "react";
+import ReactDOMServer from "react-dom/server";
+import { observer } from "mobx-react";
+import PostStore from "../../store/PostStore";
 
 
-function MyModule(quill, options){
-    quill.on('selection-change', function(range, oldRange, source) {
-        if (range) {
-          if (range.length !== 0) {
-            var text = quill.getText(range.index, range.length);
-            console.log('User has highlighted', text);
-          }
-        } else {
-          console.log('Cursor not in the editor');
-        }
-      });
-    var range = quill.getSelection();
-    if (range) {
-        if (range.length === 0) {
-          console.log('User cursor is at index', range.index);
-        } else {
-          var text = quill.getText(range.index, range.length);
-          console.log('User has highlighted: ', text);
-        }
-      } else {
-        console.log('User cursor is not in editor');
-      }
-}
 
-Quill.register('modules/customModule', MyModule);
-Quill.register('modules/imageResize', ImageResize);
-Quill.register('modules/imageDrop', ImageDrop);
+import Editor, { Editable, createEmptyState } from '@react-page/core';
+
+import { imagePlugin } from '@react-page/plugins-image';
+import spacer from '@react-page/plugins-spacer';
+import native from '@react-page/plugins-default-native';
+//import slate from '@react-page/plugins-slate';
+import slate from 'ory-editor-plugins-slate-sercan';
+import video from '@react-page/plugins-video';
+import divider from '@react-page/plugins-divider';
+import highlightPlugin from "./highlight/HighlightPlugin";
+
+import '@react-page/core/lib/index.css';
+import '@react-page/plugins-image/lib/index.css';
+import '@react-page/plugins-spacer/lib/index.css';
+import '@react-page/plugins-html5-video/lib/index.css';
+import '@react-page/plugins-slate/lib/index.css';
+
+// The default ui components
+import { Trash, DisplayModeToggle, Toolbar } from '@react-page/ui';
+import '@react-page/ui/lib/index.css';
 
 
-let icons = Quill.import('ui/icons');
-icons['bold'] = ReactDOMServer.renderToString(<Icon style={{ fontSize: '18px' }} type='bold' />);
-icons['italic'] = ReactDOMServer.renderToString(<Icon style={{ fontSize: '18px' }} type='italic' />);
-icons['underline'] = ReactDOMServer.renderToString(<Icon style={{ fontSize: '18px' }} type='underline' />);
-icons['strike'] = ReactDOMServer.renderToString(<Icon style={{ fontSize: '18px' }} type='strike' />);
 
-/*Quill.register('modules/myModule', MyModule);*/
-var toolbarOptions = [
-    ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
-    ['blockquote', 'code-block'],
-
-    [{ 'header': 1 }, { 'header': 2 }],               // custom button values
-    [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-    [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
-    [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
-    [{ 'direction': 'rtl' }],                         // text direction
-
-    [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
-    [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-    [ 'link', 'image', 'video', 'formula' ],          // add's image support
-    [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
-    [{ 'font': [] }],
-    [{ 'align': [] }],
-
-    ['clean']                                         // remove formatting button
-];
-
-
-const modules = {
-    toolbar: toolbarOptions
-/*     toolbar: [
-        [
-            {
-                header: [
-                    1,
-                    2,
-                    false
-                ]
-            }
-        ],
-        [
-            'bold',
-            'italic',
-            'underline',
-            'strike',
-            'blockquote'
-        ],
-        [
-            { list: 'ordered' },
-            { list: 'bullet' },
-            { indent: '-1' },
-            { indent: '+1' }
-        ],
-        [
-            'link',
-            'image'
-        ],
-        [
-            'clean'
-        ],
-        [
-            'code-block'
-        ]
-    ] */,
-    imageResize: {
-        parchment: Quill.import('parchment')
-        // See optional "config" below
-    },
-    customModule: {},
-    imageDrop: true,
-    syntax: {
-        highlight: (text) => window.hljs.highlightAuto(text).value
-    }
+// Define which plugins we want to use. We only have slate and parallax available, so load those.
+const plugins = {
+  content: [slate(), imagePlugin(), video, spacer, divider, highlightPlugin],
+  native
 };
 
-const formats = [
-    'header',
-    'bold',
-    'italic',
-    'underline',
-    'strike',
-    'blockquote',
-    'list',
-    'bullet',
-    'indent',
-    'link',
-    'image',
-    'code-block'
-];
-
 class PostEditorComponent extends React.Component {
-    constructor(props) {
-        super(props);
-        const initialValue = props.initialText
-        this.state = { text: initialValue ? initialValue : '' }; // Placeholder delta text for testing..
+  constructor(props) {
+    super(props);
+    this.state = { editorState: this.props.content || createEmptyState() };
+  }
 
-        this.handleChange = this.handleChange.bind(this);
-        this.quillRef = null; // Quill instance
-        this.reactQuillRef = null; // ReactQuill component
-    }
+  componentWillMount() {
+    this.editor = new Editor({
+      plugins,
+      editables: [this.state.editorState],
+      defaultPlugin: slate()
+    });
+    PostStore.setContent(this.props.content);
+  }
 
-    componentDidMount() {
-        this.attachQuillRefs();
-        this.quillRef.root.spellcheck = false;
-        PostStore.setContent(this.quillRef.getContents()); // Placeholder delta text for testing for mobx store..
-    }
+  handleChange(value) {
+    this.setState({ editorState: value }, () => {
+      PostStore.setContent(value);
+    });
+  }
 
-    componentDidUpdate() {
-        this.attachQuillRefs();
-    }
+  render() {
+    return (
+      <div>
+        <Editable
+          editor={this.editor}
+          id={this.state.editorState.id}
+          onChange={state => this.handleChange(state)}
+        />
 
-    attachQuillRefs = () => {
-        if (typeof this.reactQuillRef.getEditor !== 'function') return;
-        this.quillRef = this.reactQuillRef.getEditor();
-    };
-
-    handleChange(value) {
-        this.setState({ text: value }, () => {
-            PostStore.setContent(JSON.stringify(this.quillRef.getContents())); // Export as Delta format and update mobx store
-        });
-    }
-
-    render() {
-        return (
-            <div>
-                <ReactQuill
-                    theme='bubble'
-                    ref={(el) => {
-                        this.reactQuillRef = el;
-                    }}
-                    placeholder='Tell your story...'
-                    defaultValue={this.state.text}
-                    onChange={this.handleChange}
-                    modules={modules}
-                    formats={formats}
-                />
-            </div>
-        );
-    }
+        <Trash editor={this.editor} />
+        <DisplayModeToggle editor={this.editor} />
+        <Toolbar editor={this.editor} />
+      </div>
+    );
+  }
 }
 
 const PostEditor = observer(PostEditorComponent);

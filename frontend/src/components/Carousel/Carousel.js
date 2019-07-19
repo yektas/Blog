@@ -4,7 +4,6 @@ import Zoom from 'react-reveal/Zoom';
 import Fade from 'react-reveal/Fade';
 import Flip from 'react-reveal/Flip';
 import Rotate from 'react-reveal/Rotate';
-import Test from '../../pages/Test';
 import NavigationButton from './NavigationButton';
 import './carousel.css';
 import Slide from './Slide';

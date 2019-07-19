@@ -26,31 +26,30 @@ const NEW_POST_MUTATION = gql`
     }
 `;
 
-class NewPost extends React.Component {
-    state = {
-        detailFormVisible: false
-    };
+    class NewPost extends React.Component {
+        state = {
+            detailFormVisible: false
+        };
 
-    handleSubmit = async (values, actions) => {
-        postStore.setTitle(values.title);
-        const user = { email: "admin@admin.com"};
-        userStore.setUser(user)
-        actions.setSubmitting(false);
-        console.log(postStore, null, 4);
-        const { data } = await this.props.newPostMutation({
-            variables: {
-                post: {
-                    title: postStore.title,
-                    excerpt: postStore.excerpt,
-                    content: postStore.content,
-                    categoryName: postStore.category,
-                    author: userStore.user.email,
-                    image: postStore.coverImage
+        handleSubmit = async (values, actions) => {
+            postStore.setTitle(values.title);
+            const user = { email: "admin@admin.com"};
+            userStore.setUser(user)
+            actions.setSubmitting(false);
+            
+            const { data } = await this.props.newPostMutation({
+                variables: {
+                    post: {
+                        title: postStore.title,
+                        excerpt: postStore.excerpt,
+                        content: JSON.stringify(postStore.content),
+                        categoryName: postStore.category,
+                        author: userStore.user.email,
+                        image: postStore.coverImage
+                    }
                 }
-            }
-        });
-        console.log(data, null, 4)
-    };
+            });
+        };
 
     handlePublish = (title) => {
         postStore.setTitle(title);

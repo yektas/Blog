@@ -9,8 +9,13 @@ class CoverImageUpload extends Component {
       imagePreview: postStore.coverImage
     }
     onDrop = (files) => {
+        const uploadedFile = files.map((file) =>
+        Object.assign(file, {
+            preview: URL.createObjectURL(file)
+        })
+    )[0]
         postStore.setCoverImage(files[0]);
-        this.setState({ imagePreview: files[0] })
+        this.setState({ imagePreview: uploadedFile })
     };
 
     render() {
@@ -21,7 +26,7 @@ class CoverImageUpload extends Component {
                     return imagePreview ? (
                         <div  key={imagePreview.name}>
                             <div >
-                                <img width="300px" src={postStore.coverImage.preview} alt="test" />
+                                <img width="300px" src={imagePreview.preview} alt="test" />
                             </div>
                         </div>
                     ) : (
