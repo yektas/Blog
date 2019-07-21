@@ -1,5 +1,3 @@
-import json
-
 import graphene
 from django.contrib.auth.models import User
 from graphene import relay, ObjectType, InputObjectType, String, Boolean
@@ -55,14 +53,13 @@ def update_create_instance(post_data):
     post_id = post_data.id
     author = User.objects.get(email=post_data.author)
     category = Category.objects.get(name=post_data.category_name)
-    content = json.loads(post_data.content)
     if post_id is not None:
         print("a")
         # TODO update post with id.
     post, _ = Post.objects.get_or_create(title=post_data.title,
                                          excerpt=post_data.excerpt,
                                          image=post_data.image,
-                                         content=content,
+                                         content=post_data.content,
                                          author=author,
                                          category=category
                                          )
