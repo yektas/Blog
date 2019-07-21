@@ -7,8 +7,8 @@ import { HTMLRenderer } from '@react-page/renderer';
 import { imagePlugin } from '@react-page/plugins-image';
 import spacer from '@react-page/plugins-spacer';
 import native from '@react-page/plugins-default-native';
-import slate from '@react-page/plugins-slate';
-import html5video from '@react-page/plugins-html5-video';
+import slate from '@yektas/plugins-slate';
+import video from '@react-page/plugins-video';
 import divider from '@react-page/plugins-divider';
 import highlightPlugin from '../components/Editor/highlight/HighlightPlugin'
 import '@react-page/core/lib/index.css';
@@ -44,7 +44,8 @@ const UPDATE_POST = gql`
 const renderPost = content => {
   const editorContent = JSON.parse(content);
   const editorPlugins = {
-    content: [slate(), imagePlugin, html5video, native, spacer, divider, highlightPlugin]
+    content: [slate(), imagePlugin(), video, spacer, divider, highlightPlugin],
+    native
   };
   return <HTMLRenderer state={editorContent} plugins={editorPlugins} />;
 };

@@ -31,24 +31,37 @@ const NEW_POST_MUTATION = gql`
             detailFormVisible: false
         };
 
+        replaceParagraphType = (contentToFix) => {
+            const json = JSON.stringify(contentToFix);
+            const search = '"type":"paragraph"';
+            const fix = '"type":"PARAGRAPH/PARAGRAPH"';
+            const content = json.replace(new RegExp(search, 'g'), fix);
+            postStore.setContent(JSON.parse(content));
+            return content;
+        }
+
         handleSubmit = async (values, actions) => {
             postStore.setTitle(values.title);
             const user = { email: "admin@admin.com"};
             userStore.setUser(user)
             actions.setSubmitting(false);
+
+            //Fix paragraph serialization issue before posting #https://github.com/react-page/react-page/issues/498
+            const content = this.replaceParagraphType(postStore.content);
             
-            const { data } = await this.props.newPostMutation({
+            const response = await this.props.newPostMutation({
                 variables: {
                     post: {
                         title: postStore.title,
                         excerpt: postStore.excerpt,
-                        content: JSON.stringify(postStore.content),
+                        content: content,
                         categoryName: postStore.category,
                         author: userStore.user.email,
                         image: postStore.coverImage
                     }
                 }
             });
+            console.log(response);
         };
 
     handlePublish = (title) => {
@@ -76,7 +89,7 @@ const NEW_POST_MUTATION = gql`
                                         Ready to publish
                                     </OutlineButton>
                                 </Col>
-                                <Field placeholder='Title' name='title' spellCheck='false' component={PostTitleInput} />
+                                <Field style={{marginLeft: 50, marginRight: 50}} placeholder='Title' name='title' spellCheck='false' component={PostTitleInput} />
                                 <PostEditor />
                             </Form>
                         </EditorLayout>

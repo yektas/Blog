@@ -57,36 +57,30 @@ class HeaderClass extends Component {
 		if (this.state.theme === 'light') {
 			root.style.setProperty('--background', themes.light.background);
 			root.style.setProperty('--text-color', themes.light.textColor);
-			root.style.setProperty(
-				'--heading-color',
-				themes.light.headingColor
-			);
+			root.style.setProperty('--secondary-text-color', themes.light.secondaryTextColor)
 		} else {
 			root.style.setProperty('--background', themes.dark.background);
 			root.style.setProperty('--text-color', themes.dark.textColor);
-			root.style.setProperty('--heading-color', themes.dark.headingColor);
+			root.style.setProperty('--secondary-text-color', themes.dark.secondaryTextColor)
 		}
 
 		this.changeTheme.bind(this);
 	}
 
-	changeTheme() {
+	changeTheme = () => {
 		const root = document.getElementById('root');
 		if (this.state.theme === 'dark') {
 			root.style.setProperty('--background', themes.light.background);
 			root.style.setProperty('--text-color', themes.light.textColor);
-			root.style.setProperty(
-				'--heading-color',
-				themes.light.headingColor
-			);
-			this.setState({ theme: 'light' });
-			localStorage.setItem('userTheme', 'light');
+			root.style.setProperty('--secondary-text-color', themes.light.secondaryTextColor)
+			this.setState({ theme: 'light' }, localStorage.setItem('userTheme', 'light'));
+			
 		} else {
 			root.style.setProperty('--background', themes.dark.background);
 			root.style.setProperty('--text-color', themes.dark.textColor);
-			root.style.setProperty('--heading-color', themes.dark.headingColor);
-			this.setState({ theme: 'dark' });
-			localStorage.setItem('userTheme', 'dark');
+			root.style.setProperty('--secondary-text-color', themes.dark.secondaryTextColor)
+			this.setState({ theme: 'dark' }, localStorage.setItem('userTheme', 'dark'));
+			;
 		}
 	}
 
@@ -129,7 +123,7 @@ class HeaderClass extends Component {
 					<Col span={2}>
 						<Switch
 							checked={this.state.theme === 'dark'}
-							onChange={() => this.changeTheme()}
+							onChange={() => this.changeTheme}
 							checkedChildren="Dark"
 							unCheckedChildren="Light"
 						/>

@@ -10,8 +10,7 @@ import Editor, { Editable, createEmptyState } from '@react-page/core';
 import { imagePlugin } from '@react-page/plugins-image';
 import spacer from '@react-page/plugins-spacer';
 import native from '@react-page/plugins-default-native';
-//import slate from '@react-page/plugins-slate';
-import slate from 'ory-editor-plugins-slate-sercan';
+import slate from '@yektas/plugins-slate';
 import video from '@react-page/plugins-video';
 import divider from '@react-page/plugins-divider';
 import highlightPlugin from "./highlight/HighlightPlugin";
@@ -57,7 +56,7 @@ class PostEditorComponent extends React.Component {
 
   render() {
     return (
-      <div>
+      <div style={{paddingLeft: 50, paddingRight: 50}}>
         <Editable
           editor={this.editor}
           id={this.state.editorState.id}

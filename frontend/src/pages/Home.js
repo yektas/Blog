@@ -44,33 +44,21 @@ class Home extends Component {
 								<SectionTitle style={{ marginTop: 50, marginBottom: 25 }}>
 									Popular Posts
 								</SectionTitle>
-								<Fade bottom cascade>
-									<div>
-										{popularPosts.map(post => (
-											<Col span={8}>
-												<PostCard post={post} />
-											</Col>
-										))}
-									</div>
-								</Fade>
+								<div>
+									{popularPosts.map(post => (
+										<Col span={8}>
+											<PostCard post={post} />
+										</Col>
+									))}
+								</div>
 							</Row>
 							<Row style={{ marginTop: 20 }}>
-							<Fade left cascade>
 								<Col span={17}>
 									{data.allPosts.map(post => (
 										<Col span={12}>
 												<RegularPostCard post={post} />
 										</Col>
 								))}
-								</Col>
-							</Fade>
-								<Col span={7}>
-									<Fade right>
-										<AboutMeCard />
-									</Fade>
-									<Fade right>
-										<CategoryMenu />
-									</Fade>
 								</Col>
 							</Row>
 						</HomeLayout>

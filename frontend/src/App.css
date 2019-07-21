@@ -4,17 +4,19 @@
 /* @import '~codemirror/lib/codemirror.css';
 @import '~codemirror/theme/material.css'; */
 
-body {
+body {  
     margin: 0;
     padding: 0;
-    font-family: 'Nunito', sans-serif;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: var(--main-text-size);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background-color: var(--background);
 }
 
 span[class="ant-typography"] {
-    color: var(--secondary-text-color);
+    font-size: var(--main-text-size);
+    color: var(--text-color);
 }
 
 .anticon {
@@ -27,8 +29,9 @@ h3,
 h4,
 h5,
 h6 {
-    color: var(--heading-color) !important;
-    font-family: 'MontSerrat', sans-serif;
+    color: var(--text-color) !important;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 700;
 }
 
 .ant-form-explain {
@@ -86,13 +89,3 @@ a:hover {
     color: #e94828;
 }
 
-/* pre {
-    line-height: 1.1;
-    white-space: pre !important;
-    font-family: monospace !important;
-    font-size: 16px;
-} */
-
-/* .ql-tooltip {
-    z-index: 1300;
-} */

@@ -1,3 +1,16 @@
+
+/*Editor global css*/
+.ory-plugins-content-slate-container{
+    font-size: 22px;
+    line-height: 1.65;
+}
+
+.ory-plugins-content-slate-code{
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 5px;
+}
+
 .full-page-modal {
     width: 90% !important;
     padding: 0;

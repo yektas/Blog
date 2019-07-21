@@ -20,7 +20,6 @@ const CardHeader = styled.div`
 
     :before {
         content: '';
-        // background-color: rgba(0,0,0,0.2);
         display: block;
         position: absolute;
         min-height: 300px;
@@ -31,7 +30,7 @@ const CardHeader = styled.div`
 `
 
 const Card = styled(AntCard)`
-    background: transparent
+    background: transparent;
 `
 
 const CardHeaderWrapper = styled.div`
@@ -49,11 +48,8 @@ const CardHeaderCategory = styled.h4`
       top: 15px;
       left: 20px;
       text-transform: uppercase;
-      font-weight: bold;
-      font-size: 14px;
       z-index: 999;
 `
-
 
 class RegularPostCard extends Component {
     

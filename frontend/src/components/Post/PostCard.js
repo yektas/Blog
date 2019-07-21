@@ -47,7 +47,6 @@ const CardHeaderCategory = styled.h4`
       left: 20px;
       text-transform: uppercase;
       font-weight: bold;
-      font-size: 14px;
       z-index: 999;
 `
 
