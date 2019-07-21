@@ -26,31 +26,43 @@ const NEW_POST_MUTATION = gql`
     }
 `;
 
-class NewPost extends React.Component {
-    state = {
-        detailFormVisible: false
-    };
+    class NewPost extends React.Component {
+        state = {
+            detailFormVisible: false
+        };
 
-    handleSubmit = async (values, actions) => {
-        postStore.setTitle(values.title);
-        const user = { email: "admin@admin.com"};
-        userStore.setUser(user)
-        actions.setSubmitting(false);
-        console.log(postStore, null, 4);
-        const { data } = await this.props.newPostMutation({
-            variables: {
-                post: {
-                    title: postStore.title,
-                    excerpt: postStore.excerpt,
-                    content: postStore.content,
-                    categoryName: postStore.category,
-                    author: userStore.user.email,
-                    image: postStore.coverImage
+        replaceParagraphType = (contentToFix) => {
+            const json = JSON.stringify(contentToFix);
+            const search = '"type":"paragraph"';
+            const fix = '"type":"PARAGRAPH/PARAGRAPH"';
+            const content = json.replace(new RegExp(search, 'g'), fix);
+            postStore.setContent(JSON.parse(content));
+            return content;
+        }
+
+        handleSubmit = async (values, actions) => {
+            postStore.setTitle(values.title);
+            const user = { email: "admin@admin.com"};
+            userStore.setUser(user)
+            actions.setSubmitting(false);
+
+            //Fix paragraph serialization issue before posting #https://github.com/react-page/react-page/issues/498
+            const content = this.replaceParagraphType(postStore.content);
+            
+            const response = await this.props.newPostMutation({
+                variables: {
+                    post: {
+                        title: postStore.title,
+                        excerpt: postStore.excerpt,
+                        content: content,
+                        categoryName: postStore.category,
+                        author: userStore.user.email,
+                        image: postStore.coverImage
+                    }
                 }
-            }
-        });
-        console.log(data, null, 4)
-    };
+            });
+            console.log(response);
+        };
 
     handlePublish = (title) => {
         postStore.setTitle(title);
@@ -77,7 +89,7 @@ class NewPost extends React.Component {
                                         Ready to publish
                                     </OutlineButton>
                                 </Col>
-                                <Field placeholder='Title' name='title' spellCheck='false' component={PostTitleInput} />
+                                <Field style={{marginLeft: 50, marginRight: 50}} placeholder='Title' name='title' spellCheck='false' component={PostTitleInput} />
                                 <PostEditor />
                             </Form>
                         </EditorLayout>

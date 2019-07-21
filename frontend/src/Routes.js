@@ -7,14 +7,12 @@ import NewPost from './pages/NewPost';
 import Portfolio from './pages/Portfolio';
 import Post from './pages/Post';
 import Posts from './pages/Posts';
-import Test from './pages/Test';
 
 class Routes extends React.Component {
 	render() {
 		return (
 			<Switch>
 				<Route exact path="/" component={Home} />
-				<Route exact path="/test" component={Test} />
 				<Route exact path="/about" component={About} />
 				<Route exact path="/portfolio" component={Portfolio} />
 				<Route exact path="/blog/new-post" component={NewPost} />
