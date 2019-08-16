@@ -2,6 +2,7 @@ import graphene
 from django.contrib.auth.tokens import default_token_generator
 from djoser.conf import settings as djoser_settings
 from djoser.utils import decode_uid
+from graphql_jwt.decorators import login_required
 from rest_framework_jwt.serializers import (
     JSONWebTokenSerializer,
     RefreshJSONWebTokenSerializer
@@ -140,6 +141,7 @@ class ResetPassword(graphene.Mutation):
 
     success = graphene.Boolean()
 
+    @login_required
     def mutate(self, info, email):
         try:
             user = User.objects.get(email=email)
@@ -193,6 +195,7 @@ class DeleteAccount(graphene.Mutation):
     success = graphene.Boolean()
     errors = graphene.List(graphene.String)
 
+    @login_required
     def mutate(self, info, email, password):
         is_authenticated = info.context.user.is_authenticated
         if not is_authenticated:

@@ -1,4 +1,7 @@
+import cloudinary.uploader
+import cloudinary.models
 from django.template.defaultfilters import slugify
+from unidecode import unidecode
 
 
 def unique_slug_generator(model_instance, title, slug_field):
@@ -10,7 +13,7 @@ def unique_slug_generator(model_instance, title, slug_field):
     :return: 
     """
 
-    slug = slugify(title)
+    slug = slugify(unidecode(title))
     model_class = model_instance.__class__
 
     while model_class.objects.filter(slug=slug).exists():
@@ -20,4 +23,3 @@ def unique_slug_generator(model_instance, title, slug_field):
         slug = f'{slug}-{object_pk}'
 
     return slug
-

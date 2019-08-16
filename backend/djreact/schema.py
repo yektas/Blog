@@ -1,7 +1,9 @@
 import graphene
 import graphql_jwt
 import posts.schema
+import users.schema
 from graphene_django.debug import DjangoDebug
+
 
 
 class Mutation(posts.schema.Mutation, graphene.ObjectType):
@@ -12,6 +14,7 @@ class Mutation(posts.schema.Mutation, graphene.ObjectType):
 
 class Query(
     posts.schema.Query,
+    users.schema.Query,
     graphene.ObjectType):
     debug = graphene.Field(DjangoDebug, name='__debug')
 

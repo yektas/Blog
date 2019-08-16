@@ -26,7 +26,7 @@ SECRET_KEY = 'pi+(yb_rix37f&!ajn41ek4altsdvs(=s0t-d38@gqtx(&v1lw'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 # Application definition
 
@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'graphene_django',
     'corsheaders',
     'taggit',
+    'sslserver',
     # apps
     'posts',
     'comments'
@@ -145,14 +146,13 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 GRAPHENE = {
     'SCHEMA': 'posts.schema.schema',  # Where your Graphene schema lives
-    # 'MIDDLEWARE': [
-    #     'graphene_django.debug.DjangoDebugMiddleware',
-    #     'graphql_jwt.middleware.JSONWebTokenMiddleware',
-    # ],
+    'MIDDLEWARE': [
+        'graphql_jwt.middleware.JSONWebTokenMiddleware',
+    ],
 }
 
 GRAPHQL_JWT = {
-    'JWT_VERIFY_EXPIRATION': True,
+    'JWT_VERIFY_EXPIRATION': False,
     'JWT_EXPIRATION_DELTA': timedelta(minutes=10),
 }
 

@@ -1,10 +1,13 @@
 import graphene
+from cloudinary.uploader import upload
+from cloudinary.utils import cloudinary_url
 from django.contrib.auth.models import User
 from graphene import relay, ObjectType, InputObjectType, String, Boolean
 from graphene_django import DjangoObjectType
 from graphene_django.converter import convert_django_field
 from graphene_file_upload.scalars import Upload
 from graphql import GraphQLError
+from graphql_jwt.decorators import login_required
 from taggit.managers import TaggableManager
 
 from comments.models import Comment
@@ -15,6 +18,11 @@ from posts.models import Post, Category
 def convert_field_to_string(field, registry=None):
     return String(description=field.help_text, required=not field.null)
 
+
+class CategoryNode(DjangoObjectType):
+    class Meta:
+        model = Category
+        interfaces = (relay.Node,)
 
 class CommentNode(DjangoObjectType):
     class Meta:
@@ -44,7 +52,7 @@ class PostCreateInput(InputObjectType):
     title = graphene.String(required=True)
     excerpt = graphene.String(required=False)
     content = graphene.String(required=True)
-    image = Upload(required=False)
+    image = Upload(required=True)
     category_name = graphene.String(required=True)
     author = graphene.String(required=True)
 
@@ -58,11 +66,30 @@ def update_create_instance(post_data):
         # TODO update post with id.
     post, _ = Post.objects.get_or_create(title=post_data.title,
                                          excerpt=post_data.excerpt,
-                                         image=post_data.image,
                                          content=post_data.content,
                                          author=author,
                                          category=category
                                          )
+
+    POSTS_PREFIX="My-Blog/posts/"
+    image_upload_response = upload(
+        post_data.image,
+        public_id="cover-image",
+        folder="{}{}".format(POSTS_PREFIX, post.slug),
+        format="jpg",
+        secure=True
+    )
+
+    post.image, _ = cloudinary_url(image_upload_response["public_id"],
+                                format="jpg",
+                                secure=True, shorten=True)
+
+    thumbnail_url, _ = cloudinary_url(image_upload_response["public_id"],
+                                            format="jpg", secure=True,
+                                            crop="thumb", shorten=True, width=200)
+    post.thumbnail_url = thumbnail_url
+    post.save()
+
     return post
 
 
