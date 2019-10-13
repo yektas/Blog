@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { monokaiSublime } from 'react-syntax-highlighter/dist/esm/styles/hljs';
-import { xonokai } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 class Display extends Component {
   render() {

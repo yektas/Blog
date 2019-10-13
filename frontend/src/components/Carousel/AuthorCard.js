@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Row, Col, Avatar, Typography } from 'antd';
 
-const { Text, Title } = Typography;
+const { Text } = Typography;
 
 const AuthorCard = (props) => {
     const { name, time, readTime } = props;

@@ -1,10 +1,9 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { Typography } from 'antd';
 import { Link } from 'react-router-dom';
 import AuthorCard from './AuthorCard';
 
-const { Title, Text, Paragraph } = Typography;
+const { Title } = Typography;
 
 const Slide = props => {
     const { index, title, subtitle } = props;

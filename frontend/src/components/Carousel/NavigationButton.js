@@ -2,7 +2,6 @@ import React from 'react'
 import styled from "styled-components";
 import { IconContext } from "react-icons";
 import { FaLongArrowAltLeft, FaLongArrowAltRight } from "react-icons/fa";
-import { Icon } from 'antd';
 
 const Button = styled.button`
     background: transparent;

@@ -1,38 +1,58 @@
+/* Editor global css */
 
-/*Editor global css*/
-.ory-plugins-content-slate-container{
-    font-size: 22px;
-    line-height: 1.65;
+/* Media queries */
+/* Extra small devices (phones, up to 480px) */
+@media screen and (max-width: 767px) {
+	.ory-plugins-content-slate-container {
+		font-size: 16px !important;
+	}
+}
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991px) {
+}
+/* tablets/desktops and up ———– */
+@media (min-width: 992px) and (max-width: 1199px) {
+}
+/* large desktops and up ———– */
+@media screen and (min-width: 1200px) {
+}
+.ory-plugins-content-slate-container {
+	font-size: 22px;
+	line-height: 1.65;
+	/* font-weight: 400;
+	font-style: normal; */
+	font-family: Georgia, serif;
+	/* font-family: 'Poppins', 'Helvetica', 'Arial', sans-serif; */
 }
 
-.ory-plugins-content-slate-code{
-    margin-left: 5px;
-    margin-right: 5px;
-    border-radius: 5px;
+.ory-plugins-content-slate-code {
+	margin-left: 5px;
+	margin-right: 5px;
+	border-radius: 5px;
 }
 
 .full-page-modal {
-    width: 90% !important;
-    padding: 0;
-    top: 10;
-    height: 60%;
+	width: 90% !important;
+	padding: 0;
+	top: 10;
+	height: 60%;
 }
 
 .full-page-modal > .ant-modal-content {
-    height: 100%;
-    padding: 40px;
+	height: 100%;
+	padding: 40px;
 }
 
 .steps-content {
-    margin-top: 40px;
-    min-height: 200px;
-    text-align: center;
+	margin-top: 40px;
+	min-height: 200px;
+	text-align: center;
 }
 
 .ant-steps-item-custom .ant-steps-item-icon > .ant-steps-icon {
-    line-height: 0;
+	line-height: 0;
 }
 
 .ant-card-grid-selected {
-    box-shadow: 0px 0px 2px 5px #0090ff;
+	box-shadow: 0px 0px 2px 5px #0090ff;
 }

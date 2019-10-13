@@ -1,8 +1,7 @@
 :root {
-    /* Default values for dark mode */
-    --text-color: rgba(255, 255, 255, 0.89);
-    --secondary-text-color: rgba(255, 255, 255, 0.5);
-    --background: #262628;
-    --main-text-size: 18px;
-    --secondary-text-size: 14px;
+	/* Default values for dark mode */
+	--text-color: rgba(0, 0, 0, 0.84);
+	--secondary-text-color: rgba(0, 0, 0, 0.65);
+	--background: #ffff;
+	--heading-color: rgba(0, 0, 0, 0.84);
 }

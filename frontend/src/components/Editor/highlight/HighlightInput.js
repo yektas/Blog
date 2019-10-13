@@ -2,10 +2,6 @@ import React, { Component } from "react";
 import { Input, Select } from "antd";
 import styled from 'styled-components';
 
-/* import {UnControlled as CodeMirror} from 'react-codemirror2'
-require('codemirror/mode/xml/xml');
-require('codemirror/mode/javascript/javascript'); */
-
 const { TextArea } = Input;
 const { Option } = Select;
 
@@ -45,15 +41,6 @@ class HighlightInput extends Component {
 
     return (
         <div>
-          {/*         <CodeMirror
-          value={text || '<h1>I love codemirror</h1>'}
-          options={{
-            mode: 'javascript',
-            theme: 'material',
-            lineNumbers: true
-          }}
-          onChange={handleCodeChange}
-/> */}
           <CustomTextArea
             autosize
             spellCheck="false"

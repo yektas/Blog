@@ -1,165 +1,157 @@
 import React, { Component } from 'react';
-import { Layout, Menu, Row, Col, Dropdown, Button, Icon, Switch } from 'antd';
+import { Layout, Col, Icon, Button, Drawer } from 'antd';
 import { Link, withRouter } from 'react-router-dom';
 import styled from 'styled-components';
-import userStore from '../../store/UserStore';
-import lastLogo from '../../assets/lastLogo.png';
-import themes from '../../themes';
-import AuthModal from '../Auth/AuthModal';
-const { Header: AntHeader } = Layout;
+import { useMediaQuery } from 'react-responsive';
+import RightMenu from './RightMenu';
+import LeftMenu from './LeftMenu';
+import lightLogo from '../../assets/logo-light.png';
+import darkLogo from '../../assets/logo-dark.png';
+import { changeTheme } from '../../utils/Utils';
+import { device } from '../../device';
+import './header.css';
 
-const CustomHeader = styled(AntHeader)`
-	background: var(--background);
-`;
-
-const Logo = styled.img`
-	width: 200px;
-`;
-
-const CustomMenu = styled(Menu)`
-	margin-top: 20px
-	background: var(--background);
-	font-family: 'Montserrat', sans-serif;
-	font-weight: 500
-`;
-
-const CustomMenuItem = styled(Menu.Item)`
-	color: var(--text-color);
-	border-radius: 8px
-	font-size: 16px
-	flex: 1
-`;
-const menu = (
-	<Menu>
-		<Menu.Item key="1">
-			<Icon type="user" />
-			1st menu item
-		</Menu.Item>
-		<Menu.Item key="2">
-			<Icon type="user" />
-			2nd menu item
-		</Menu.Item>
-		<Menu.Item key="3">
-			<Icon type="user" />
-			3rd item
-		</Menu.Item>
-	</Menu>
-);
+const Desktop = ({ children }) => {
+	const isDesktop = useMediaQuery({ minWidth: 992 });
+	return isDesktop ? children : null;
+};
+const Tablet = ({ children }) => {
+	const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 991 });
+	return isTablet ? children : null;
+};
+const Mobile = ({ children }) => {
+	const isMobile = useMediaQuery({ maxWidth: 767 });
+	return isMobile ? children : null;
+};
+const Default = ({ children }) => {
+	const isNotMobile = useMediaQuery({ minWidth: 768 });
+	return isNotMobile ? children : null;
+};
 
 class HeaderClass extends Component {
 	constructor() {
 		super();
+		const userTheme = localStorage.getItem('userTheme');
 		this.state = {
-			theme: localStorage.getItem('userTheme'),
-			showAuthModal: false
+			theme: userTheme != null ? userTheme : 'light',
+			authModalVisible: false,
+			drawerVisible: false
 		};
-		const root = document.getElementById('root');
-		if (this.state.theme === 'light') {
-			root.style.setProperty('--background', themes.light.background);
-			root.style.setProperty('--text-color', themes.light.textColor);
-			root.style.setProperty('--secondary-text-color', themes.light.secondaryTextColor)
-		} else {
-			root.style.setProperty('--background', themes.dark.background);
-			root.style.setProperty('--text-color', themes.dark.textColor);
-			root.style.setProperty('--secondary-text-color', themes.dark.secondaryTextColor)
-		}
-
-		this.changeTheme.bind(this);
-	}
-
-	changeTheme = () => {
-		const root = document.getElementById('root');
-		if (this.state.theme === 'dark') {
-			root.style.setProperty('--background', themes.light.background);
-			root.style.setProperty('--text-color', themes.light.textColor);
-			root.style.setProperty('--secondary-text-color', themes.light.secondaryTextColor)
-			this.setState({ theme: 'light' }, localStorage.setItem('userTheme', 'light'));
-			
-		} else {
-			root.style.setProperty('--background', themes.dark.background);
-			root.style.setProperty('--text-color', themes.dark.textColor);
-			root.style.setProperty('--secondary-text-color', themes.dark.secondaryTextColor)
-			this.setState({ theme: 'dark' }, localStorage.setItem('userTheme', 'dark'));
-			;
-		}
 	}
 
 	showAuthModal = () => {
-		this.setState({ showAuthModal: true });
+		this.setState({ authModalVisible: true });
 	};
 
 	closeAuthModal = () => {
-		this.setState({ showAuthModal: false });
+		this.setState({ authModalVisible: false });
+	};
+
+	componentDidMount() {
+		this.setState(
+			{
+				theme: this.state.theme
+			},
+			this.setTheme(this.state.theme)
+		);
+	}
+
+	setTheme = (theme) => {
+		this.setState(
+			{
+				theme: theme
+			},
+			changeTheme(theme, false)
+		);
+	};
+
+	toggleTheme = () => {
+		const { theme } = this.state;
+		if (theme === 'dark') {
+			this.setTheme('light');
+		} else {
+			this.setTheme('dark');
+		}
+	};
+
+	showDrawer = () => {
+		this.setState({
+			drawerVisible: true
+		});
+	};
+
+	onClose = () => {
+		this.setState({
+			drawerVisible: false
+		});
 	};
 
 	render() {
-		let user = userStore.user;
-		const { location } = this.props;
 		return (
-			<CustomHeader>
-				<Row>
-					<Col span={12} offset={4}>
-						<Logo src={lastLogo} alt="test" />
+			<nav className="menu">
+				<div className="menu__logo">
+					<Col lg={4} md={5} sm={24} xs={24}>
+						<Link to="/">
+							<Logo
+								src={this.state.theme === 'dark' ? lightLogo : darkLogo}
+								alt="test"
+							/>
+						</Link>
 					</Col>
-					<Col span={6}>
-						{user ? (
-							<Dropdown overlay={menu} trigger={['click']}>
-								<Button style={{ marginLeft: 8 }}>
-									Button <Icon type="down" />
-								</Button>
-							</Dropdown>
-						) : (
-							<div>
-								<Button onClick={this.showAuthModal}>
-									Login
-								</Button>
-								<AuthModal
-									visible={this.state.showAuthModal}
-									onCancel={this.closeAuthModal}
-								/>
-							</div>
-						)}
-					</Col>
-					<Col span={2}>
-						<Switch
-							checked={this.state.theme === 'dark'}
-							onChange={() => this.changeTheme}
-							checkedChildren="Dark"
-							unCheckedChildren="Light"
+				</div>
+
+				<div className="menu__container">
+					<div className="menu_left">
+						<LeftMenu mode="horizontal" />
+					</div>
+					<div className="menu_right">
+						<RightMenu
+							mode="horizontal"
+							theme={this.state.theme}
+							onLoginClick={this.showAuthModal}
+							onLoginCancel={this.closeAuthModal}
+							authModalVisible={this.state.authModalVisible}
+							toggleTheme={this.toggleTheme}
 						/>
-					</Col>
-				</Row>
-				<Col style={{ textAlign: 'center' }}>
-					<CustomMenu
-						theme={this.state.theme}
-						mode="horizontal"
-						selectedKeys={[location.pathname]}>
-						<CustomMenuItem key="/">
-							<Link to="/" />
-							HOME
-						</CustomMenuItem>
-						<CustomMenuItem key="/blog/new-post">
-							<Link to="/blog/new-post" />
-							NEW POST
-						</CustomMenuItem>
-						<CustomMenuItem key="/blog">
-							<Link to="/blog" />
-							BLOG
-						</CustomMenuItem>
-						<CustomMenuItem key="/about">
-							<Link to="/about" />
-							ABOUT
-						</CustomMenuItem>
-						<CustomMenuItem key="/portfolio">
-							<Link to="/portfolio" />
-							PORTFOLIO
-						</CustomMenuItem>
-					</CustomMenu>
-				</Col>
-			</CustomHeader>
+					</div>
+					<Button className="menu__mobile-button" onClick={this.showDrawer}>
+						<Icon type="menu" />
+					</Button>
+					<Drawer
+						title="Basic Drawer"
+						placement="right"
+						className="menu_drawer"
+						closable={false}
+						onClose={this.onClose}
+						visible={this.state.drawerVisible}
+					>
+						<LeftMenu mode="inline" />
+						<RightMenu
+							mode="inline"
+							theme={this.state.theme}
+							onLoginClick={this.showAuthModal}
+							onLoginCancel={this.closeAuthModal}
+							authModalVisible={this.state.authModalVisible}
+							toggleTheme={this.toggleTheme}
+						/>
+					</Drawer>
+				</div>
+			</nav>
 		);
 	}
 }
+
+const Logo = styled.img`
+	width: 130px;
+
+	@media ${device.mobileS}, ${device.mobileM}, ${device.mobileL} {
+		width: 130px;
+	}
+
+	@media ${device.tablet} {
+		max-width: 160px;
+	}
+`;
 
 const Header = withRouter(HeaderClass);
 

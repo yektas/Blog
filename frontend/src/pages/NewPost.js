@@ -7,7 +7,7 @@ import { graphql } from 'react-apollo';
 import { observer } from 'mobx-react';
 import { PostEditor, PostTitleInput } from '../components/Editor';
 import { EditorLayout } from '../components/Layout';
-import OutlineButton from '../components/common/OutlineButton';
+import { OutlineButton } from '../components/common';
 import postStore from '../store/PostStore';
 import PostDetailsForm from '../components/Editor/PostDetailsForm';
 import userStore from '../store/UserStore';

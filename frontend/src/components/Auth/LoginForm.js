@@ -2,15 +2,26 @@ import { Button, Icon } from 'antd';
 import { Field, Form as FormikForm, Formik } from 'formik';
 import gql from 'graphql-tag';
 import React from 'react';
-import { graphql } from 'react-apollo';
+import { graphql, compose, withApollo } from 'react-apollo';
 import styled from 'styled-components';
 import * as Yup from 'yup';
 import FormInput from '../common/FormInput';
+import userStore from '../../store/UserStore';
 
 const LOGIN_MUTATION = gql`
 	mutation login($username: String!, $password: String!) {
 		tokenAuth(username: $username, password: $password) {
 			token
+		}
+	}
+`;
+
+const GET_ME = gql`
+	{
+		me {
+			id
+			email
+			username
 		}
 	}
 `;
@@ -34,6 +45,12 @@ class LoginForm extends React.Component {
 			}
 		});
 		localStorage.setItem('token', data.tokenAuth.token);
+		const { client } = this.props;
+		const res = await client.query({ query: GET_ME });
+		userStore.setUser({
+			username: res.data.me.username,
+			email: res.data.me.email
+		});
 	};
 
 	render() {
@@ -45,7 +62,7 @@ class LoginForm extends React.Component {
 				}}
 				validationSchema={validationSchema}
 				onSubmit={this.handleSubmit}
-				render={formProps => (
+				render={(formProps) => (
 					<Form>
 						<Field
 							component={FormInput}
@@ -79,7 +96,8 @@ class LoginForm extends React.Component {
 						<Button
 							type="primary"
 							htmlType="submit"
-							loading={formProps.isSubmitting}>
+							loading={formProps.isSubmitting}
+						>
 							Login
 						</Button>
 					</Form>
@@ -89,4 +107,7 @@ class LoginForm extends React.Component {
 	}
 }
 
-export default graphql(LOGIN_MUTATION, { name: 'loginMutation' })(LoginForm);
+export default compose(
+	withApollo,
+	graphql(LOGIN_MUTATION, { name: 'loginMutation' })
+)(LoginForm);

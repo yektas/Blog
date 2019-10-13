@@ -2,15 +2,14 @@ import React from 'react';
 import { Layout, Col, Row } from 'antd';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-
-import { Header, HeaderV2 } from '../Header';
+import { useMediaQuery } from 'react-responsive';
+import { Header } from '../Header';
 
 const { Content, Footer } = Layout;
 
 const CustomLayout = styled(Layout)`
-    padding: 10px
-    background: var(--background);
-    color: var(--text-color);
+	background: var(--background);
+	color: var(--text-color);
 `;
 
 class MainLayout extends React.Component {
@@ -18,17 +17,15 @@ class MainLayout extends React.Component {
 		const { showHeader } = this.props;
 		return (
 			<CustomLayout>
-				{showHeader && <HeaderV2 />}
+				{showHeader && <Header />}
 				<Content
 					style={{
-						padding: '0 50px',
 						marginTop: 50,
 						minHeight: 1080
-					}}>
+					}}
+				>
 					<Row style={{ marginTop: 50 }}>
-						<Col span={14} offset={5}>
-							{this.props.children}
-						</Col>
+						<Col span={24}>{this.props.children}</Col>
 					</Row>
 				</Content>
 				<Footer style={{ textAlign: 'center' }}>

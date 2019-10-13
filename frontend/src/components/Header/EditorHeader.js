@@ -11,6 +11,7 @@ const CustomHeader = styled(AntHeader)`
 	background: var(--background);
 `;
 
+//TODO This is similar to Header.js fix the code duplication.
 class EditorHeaderClass extends Component {
 	constructor() {
 		super();
@@ -18,37 +19,34 @@ class EditorHeaderClass extends Component {
 			theme: localStorage.getItem('userTheme'),
 			showAuthModal: false
 		};
-        this.setThemeColors.bind(this);
+		this.setThemeColors.bind(this);
 		this.changeTheme.bind(this);
-    }
+	}
 
-    setThemeColors(theme){
-        const root = document.getElementById('root');
+	setThemeColors(theme) {
+		const root = document.getElementById('root');
 		if (theme === 'light') {
 			root.style.setProperty('--background', themes.light.background);
 			root.style.setProperty('--text-color', themes.light.textColor);
-			root.style.setProperty(
-				'--heading-color',
-				themes.light.headingColor
-			);
+			root.style.setProperty('--heading-color', themes.light.headingColor);
 		} else {
 			root.style.setProperty('--background', themes.dark.background);
 			root.style.setProperty('--text-color', themes.dark.textColor);
 			root.style.setProperty('--heading-color', themes.dark.headingColor);
 		}
-    }
+	}
 
-    changeTheme = () =>  {
+	changeTheme = () => {
 		if (this.state.theme === 'dark') {
-			this.setThemeColors("light");
+			this.setThemeColors('light');
 			this.setState({ theme: 'light' });
 			localStorage.setItem('userTheme', 'light');
 		} else {
-            this.setThemeColors("dark");
-            this.setState({ theme: 'dark' });
+			this.setThemeColors('dark');
+			this.setState({ theme: 'dark' });
 			localStorage.setItem('userTheme', 'dark');
 		}
-	}
+	};
 
 	showAuthModal = () => {
 		this.setState({ showAuthModal: true });
@@ -63,17 +61,16 @@ class EditorHeaderClass extends Component {
 		return (
 			<CustomHeader>
 				<Row>
-                    <Col span={2}>
-                        <ChangeThemeSwitch onChange={this.changeTheme}
-                            theme={this.state.theme}
-                        />
-                    </Col>
-                    <Col span={2} offset={15}>
-                        <UserMenu />
-                    </Col>
 					<Col span={2}>
-
+						<ChangeThemeSwitch
+							onChange={this.changeTheme}
+							theme={this.state.theme}
+						/>
 					</Col>
+					<Col span={2} offset={15}>
+						<UserMenu />
+					</Col>
+					<Col span={2}></Col>
 				</Row>
 			</CustomHeader>
 		);

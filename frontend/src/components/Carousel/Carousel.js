@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import Slider from 'react-slick';
-import Zoom from 'react-reveal/Zoom';
 import Fade from 'react-reveal/Fade';
-import Flip from 'react-reveal/Flip';
-import Rotate from 'react-reveal/Rotate';
 import NavigationButton from './NavigationButton';
 import './carousel.css';
 import Slide from './Slide';

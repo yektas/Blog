@@ -43,4 +43,4 @@ const OutlineButton = (props) => (
             {props.children}
         </StyledButton>
     )
-export default OutlineButton;
+export { OutlineButton };
